@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/asset_list"
+        android:title="@string/asset_list"
+        android:icon="@drawable/ic_asset_list"/>
+    <item android:id="@+id/asset_inventory"
+        android:title="@string/asset_inventory"
+        android:icon="@drawable/ic_asset_inventory"/>
+</menu>

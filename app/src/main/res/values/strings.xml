@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NALAssetManagement</string>
+    <string name="asset_list">Danh sách tài sản</string>
+    <string name="asset_inventory">Kiểm kê tài sản</string>
+    <string name="asset_list_fragment">Asset List fragment</string>
+    <string name="inventory_fragment">Inventory fragment</string>
+</resources>
