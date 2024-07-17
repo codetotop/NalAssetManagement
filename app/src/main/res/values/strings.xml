@@ -4,4 +4,5 @@
     <string name="asset_inventory">Kiểm kê tài sản</string>
     <string name="asset_list_fragment">Asset List fragment</string>
     <string name="inventory_fragment">Inventory fragment</string>
+    <string name="asset_management">Quản lý tài sản</string>
 </resources>
