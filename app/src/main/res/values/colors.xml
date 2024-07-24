@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="base_color">#1F426C</color>
+    <color name="hint_color">#4E5257</color>
+    <color name="color_bg_base">#EFF6FF</color>
 </resources>

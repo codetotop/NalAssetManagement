@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_base"
+    tools:context=".screen.asset_info.AssetInfoActivity">
+
+    <com.example.nalassetmanagement.common_view.ActionBarView
+        android:id="@+id/abvAssetInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:img_left="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Thông tin tài sản" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgAssetPhoto"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/abvAssetInfo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:background="@drawable/bg_add_photo_button"
+        android:text="@string/add_photo"
+        android:textAllCaps="false"
+        android:textColor="@color/base_color"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="@+id/imgAssetPhoto"
+        app:layout_constraintStart_toStartOf="@+id/imgAssetPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imgAssetPhoto" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAssetDetail"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:background="@drawable/bg_add_photo_button"
+        android:text="@string/asset_detail"
+        android:textAllCaps="false"
+        android:textColor="@color/base_color"
+        app:backgroundTint="@null"
+        android:gravity="start"
+        android:drawableEnd="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddPhoto" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAssetDepreciation"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:background="@drawable/bg_add_photo_button"
+        android:text="@string/asset_depreciation_detail"
+        android:textAllCaps="false"
+        android:textColor="@color/base_color"
+        app:backgroundTint="@null"
+        android:gravity="start"
+        android:drawableEnd="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAssetDetail" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAssetAddress"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
+        android:background="@drawable/bg_add_photo_button"
+        android:text="@string/asset_address_detail"
+        android:textAllCaps="false"
+        android:textColor="@color/base_color"
+        app:backgroundTint="@null"
+        android:gravity="start"
+        android:drawableEnd="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_20dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAssetDepreciation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

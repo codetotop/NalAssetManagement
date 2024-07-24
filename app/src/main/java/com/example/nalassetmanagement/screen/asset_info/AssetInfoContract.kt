@@ -1,6 +1,6 @@
-package com.example.nalassetmanagement.screen.inventory
+package com.example.nalassetmanagement.screen.asset_info
 
-interface InventoryContract {
+interface AssetInfoContract {
 
     interface Presenter {
         fun fetchData()

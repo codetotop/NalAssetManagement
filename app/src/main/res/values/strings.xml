@@ -5,4 +5,9 @@
     <string name="asset_list_fragment">Asset List fragment</string>
     <string name="inventory_fragment">Inventory fragment</string>
     <string name="asset_management">Quản lý tài sản</string>
+    <string name="hint_search_asset">Nhập Ldap, mã sản phẩm …</string>
+    <string name="add_photo">Thêm ảnh</string>
+    <string name="asset_detail">Chi tiết tài sản</string>
+    <string name="asset_depreciation_detail">Chi tiết khấu hao tài sản</string>
+    <string name="asset_address_detail">Vị trí tài sản</string>
 </resources>

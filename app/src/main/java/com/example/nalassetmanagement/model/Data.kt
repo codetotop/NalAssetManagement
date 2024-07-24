@@ -1,6 +1,5 @@
 package com.example.nalassetmanagement.model
 
-import com.example.nalassetmanagement.model.User
 import com.google.gson.annotations.SerializedName
 
 data class Data(

@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.main.MainActivity">
+    tools:context=".screen.asset_info.asset_depreciation.AssetDepreciationActivity">
 
-    <com.example.nalassetmanagement.common_view.ActionBarView
-        android:id="@+id/abvMain"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:title="@string/asset_management"
-        app:img_right="@drawable/ic_qr_code"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/asset_list_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

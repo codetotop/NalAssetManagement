@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,9 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NALAssetManagement"
         tools:targetApi="31">
-
         <activity
-            android:name=".screen.main.MainActivity"
+            android:name=".screen.asset_info.AssetInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.asset_info.asset_detail.AssetDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.asset_info.asset_depreciation.AssetDepreciationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.asset_list.AssetListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

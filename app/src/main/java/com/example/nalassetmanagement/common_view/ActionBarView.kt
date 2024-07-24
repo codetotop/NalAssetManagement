@@ -9,7 +9,8 @@ import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ActionBarBinding
 
 class ActionBarView : LinearLayout {
-    private var binding: ActionBarBinding
+    private var binding: ActionBarBinding =
+        ActionBarBinding.inflate(LayoutInflater.from(context), this, false)
 
     private lateinit var listener: ActionBarViewListener
 
@@ -23,7 +24,6 @@ class ActionBarView : LinearLayout {
     }
 
     init {
-        binding = ActionBarBinding.inflate(LayoutInflater.from(context), this, false)
         addView(binding.root)
     }
 

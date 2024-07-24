@@ -7,8 +7,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgLeft"
-        android:layout_width="@dimen/_64dp"
-        android:layout_height="@dimen/_64dp" />
+        android:layout_width="@dimen/dimen_64dp"
+        android:layout_height="@dimen/dimen_64dp"
+        android:padding="12dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
@@ -25,7 +26,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgRight"
-        android:layout_width="@dimen/_64dp"
-        android:layout_height="@dimen/_64dp"
+        android:layout_width="@dimen/dimen_64dp"
+        android:layout_height="@dimen/dimen_64dp"
         android:padding="12dp" />
 </LinearLayout>

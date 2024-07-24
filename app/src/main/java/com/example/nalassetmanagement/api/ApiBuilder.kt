@@ -32,7 +32,7 @@ class ApiBuilder {
         private var mInstance: ApiBuilder? = null
         private val CONNECTION_TIME_OUT = 60000L
         private val READ_TIME_OUT = 60000L
-        private val BASE_URL = "https://api.stackexchange.com/"
+        private val BASE_URL = "https://vuvanviet.com/"
 
         fun getInstance(): ApiBuilder? {
             synchronized(ApiBuilder::class.java) {

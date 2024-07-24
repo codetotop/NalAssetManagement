@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_base"
+    tools:context=".screen.asset_list.AssetListActivity">
+
+    <com.example.nalassetmanagement.common_view.ActionBarView
+        android:id="@+id/abvMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:img_right="@drawable/ic_analytics"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/asset_management" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_10dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_edt_search"
+        android:hint="@string/hint_search_asset"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:backgroundTint="@null"
+        android:paddingVertical="@dimen/dimen_15dp"
+        android:paddingStart="@dimen/dimen_12dp"
+        android:textColor="@color/base_color"
+        android:textColorHint="@color/hint_color"
+        app:layout_constraintEnd_toStartOf="@+id/imgFilter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abvMain"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/imgFilter"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="@dimen/dimen_12dp"
+        android:src="@drawable/ic_filter"
+        app:layout_constraintBottom_toBottomOf="@id/edtSearch"
+        app:layout_constraintEnd_toStartOf="@+id/imgQrCode"
+        app:layout_constraintTop_toTopOf="@+id/edtSearch" />
+
+    <ImageView
+        android:id="@+id/imgQrCode"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="@dimen/dimen_10dp"
+        android:padding="@dimen/dimen_12dp"
+        android:src="@drawable/ic_qr_code"
+        app:layout_constraintBottom_toBottomOf="@id/edtSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvAssetList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:padding="@dimen/dimen_10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTintMode="@color/base_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

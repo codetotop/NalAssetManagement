@@ -1,12 +1,21 @@
 package com.example.nalassetmanagement.screen.asset_list
 
+import com.example.nalassetmanagement.model.Data
+import com.example.nalassetmanagement.model.ListAsset
+
 interface AssetListContract {
 
     interface Presenter {
-        fun fetchAssetList()
+        fun login(displayName: String, password: String)
+
+        fun fetchAssetList(page: Int)
     }
 
     interface View {
-        fun loadAssetList()
+        fun loginSuccess(data: Data)
+        fun loginFailure()
+
+        fun fetchAssetListSuccess(data: ListAsset?)
+        fun fetchAssetListFailure()
     }
 }
