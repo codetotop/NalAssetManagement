@@ -7,7 +7,7 @@
     android:background="@color/color_bg_base"
     tools:context=".screen.asset_info.AssetInfoActivity">
 
-    <com.example.nalassetmanagement.common_view.ActionBarView
+    <com.example.nalassetmanagement.view.custom.ActionBarView
         android:id="@+id/abvAssetInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

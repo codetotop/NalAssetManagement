@@ -1,4 +1,4 @@
-package com.example.nalassetmanagement.common_view
+package com.example.nalassetmanagement.view.custom
 
 import android.annotation.SuppressLint
 import android.content.Context

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ItemAssetBinding
 import com.example.nalassetmanagement.model.Asset
+import com.example.nalassetmanagement.view.extension.loadWithPicasso
 import com.squareup.picasso.Picasso
 
 class AssetListAdapter(private var list: List<Asset>, private var listener: OnClickListener) :
@@ -54,10 +55,3 @@ class AssetListAdapter(private var list: List<Asset>, private var listener: OnCl
     }
 }
 
-fun ImageView.loadWithPicasso(uri: String?) {
-    if (uri.isNullOrEmpty()) {
-        this.setImageResource(R.drawable.ic_computer)
-    } else {
-        Picasso.get().load(uri).placeholder(R.drawable.ic_computer).error(R.drawable.ic_computer).into(this)
-    }
-}

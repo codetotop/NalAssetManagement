@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.nalassetmanagement.common_view.ActionBarView
+import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
 import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.Data
