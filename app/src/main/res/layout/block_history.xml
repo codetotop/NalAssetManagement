@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_detail">
+
+    <TextView
+        android:id="@+id/tvTitleHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/history"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgAddHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:src="@drawable/ic_add_box"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitleHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleHistory" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdHistory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleHistory" />
+
+    <TextView
+        android:id="@+id/tvTitleHistory1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/ngay_trong_kho"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdHistory" />
+
+    <TextView
+        android:id="@+id/tvHistory1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="1106"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleHistory1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleHistory1"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleHistory1" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdHistory1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleHistory1" />
+
+    <TextView
+        android:id="@+id/tvTitleHistory2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/mang_di_sua"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdHistory1" />
+
+    <TextView
+        android:id="@+id/tvHistory2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="11 ngày"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleHistory2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleHistory2"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleHistory2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

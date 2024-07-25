@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_detail">
+
+    <TextView
+        android:id="@+id/tvTitleCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/category"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgAddCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:src="@drawable/ic_add_box"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitleCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleCategory" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdCategory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleCategory" />
+
+    <TextView
+        android:id="@+id/tvTitleCategory1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/computer"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdCategory" />
+
+    <TextView
+        android:id="@+id/tvCategory1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Computer"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleCategory1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleCategory1"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleCategory1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

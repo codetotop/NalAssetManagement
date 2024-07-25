@@ -49,7 +49,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
     }
 
     private fun addListener() {
-        binding.abvMain.setActionBarViewListener(this)
+        binding.abvAssetList.setActionBarViewListener(this)
     }
 
     override fun loginSuccess(data: Data) {

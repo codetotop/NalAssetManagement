@@ -8,7 +8,7 @@
     tools:context=".screen.asset_list.AssetListActivity">
 
     <com.example.nalassetmanagement.view.custom.ActionBarView
-        android:id="@+id/abvMain"
+        android:id="@+id/abvAssetList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:img_right="@drawable/ic_analytics"
@@ -33,7 +33,7 @@
         android:textColorHint="@color/hint_color"
         app:layout_constraintEnd_toStartOf="@+id/imgFilter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abvMain"
+        app:layout_constraintTop_toBottomOf="@+id/abvAssetList"
         tools:ignore="RtlSymmetry" />
 
     <ImageView
