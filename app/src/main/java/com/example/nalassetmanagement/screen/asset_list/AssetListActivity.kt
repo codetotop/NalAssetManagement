@@ -10,7 +10,7 @@ import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
 import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.Data
-import com.example.nalassetmanagement.model.ListAsset
+import com.example.nalassetmanagement.model.AssetList
 import com.example.nalassetmanagement.screen.asset_filter.AssetFilterActivity
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
 import kotlinx.coroutines.delay
@@ -65,7 +65,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     }
 
-    override fun fetchAssetListSuccess(data: ListAsset?) {
+    override fun fetchAssetListSuccess(data: AssetList?) {
         binding.loading.visibility = View.GONE
         data?.data?.let {
             assetListResponses = it

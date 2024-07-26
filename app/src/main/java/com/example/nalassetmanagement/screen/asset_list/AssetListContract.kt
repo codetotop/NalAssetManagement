@@ -1,7 +1,7 @@
 package com.example.nalassetmanagement.screen.asset_list
 
 import com.example.nalassetmanagement.model.Data
-import com.example.nalassetmanagement.model.ListAsset
+import com.example.nalassetmanagement.model.AssetList
 
 interface AssetListContract {
 
@@ -15,7 +15,7 @@ interface AssetListContract {
         fun loginSuccess(data: Data)
         fun loginFailure()
 
-        fun fetchAssetListSuccess(data: ListAsset?)
+        fun fetchAssetListSuccess(data: AssetList?)
         fun fetchAssetListFailure()
     }
 }

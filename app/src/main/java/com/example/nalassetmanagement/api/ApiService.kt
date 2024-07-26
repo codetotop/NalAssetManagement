@@ -1,6 +1,7 @@
 package com.example.nalassetmanagement.api
 
 import com.example.nalassetmanagement.model.AssetListResponse
+import com.example.nalassetmanagement.model.FilterListResponse
 import com.example.nalassetmanagement.model.LoginData
 import retrofit2.Call
 import retrofit2.http.Field
@@ -17,4 +18,7 @@ interface ApiService {
 
     @GET("api/product/list?")
     fun fetchAssetList(@Query("page") page: Int): Call<AssetListResponse>
+
+    @POST("api/option/list")
+    fun fetchFilterList(): Call<FilterListResponse>
 }

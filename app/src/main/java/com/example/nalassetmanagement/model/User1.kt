@@ -2,7 +2,7 @@ package com.example.nalassetmanagement.model
 
 import com.google.gson.annotations.SerializedName
 
-data class User(
+data class User1(
     @SerializedName("id") val id: Int,
     @SerializedName("display_name") val displayName: String,
     @SerializedName("avatar")val avatar: String,

@@ -16,7 +16,6 @@
         app:img_left="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:img_right="@drawable/ic_add_box_white"
         app:title="@string/location" />
 
     <androidx.recyclerview.widget.RecyclerView

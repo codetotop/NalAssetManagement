@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_20dp"
         android:src="@drawable/ic_add_box_blue"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/tvTitleCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitleCategory" />

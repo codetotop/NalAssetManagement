@@ -27,13 +27,20 @@ class AssetFilterAdapter(private val list: List<AssetFilter>, private val listen
         with(holder) {
             with(list[position]) {
                 binding.tvTitle.text = title
-                binding.tvValue.text = value
+                binding.tvValue.text = name
 
                 binding.root.setOnClickListener {
                     listener.onItemClick(position)
                 }
             }
         }
+    }
+
+    //fun replaceList()
+
+    fun updateItem(position: Int, filterValue: String?) {
+        list[position].name = filterValue!!
+        notifyItemChanged(position)
     }
 
     interface OnClickListener {

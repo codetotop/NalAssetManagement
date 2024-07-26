@@ -3,9 +3,9 @@ package com.example.nalassetmanagement.model
 import com.google.gson.annotations.SerializedName
 import kotlin.collections.List
 
-class AssetListResponse : BaseResponse<ListAsset>()
+class AssetListResponse : BaseResponse<AssetList>()
 
-data class ListAsset(
+data class AssetList(
     @SerializedName("current_page")
     val currentPage: Int? = null,
     @SerializedName("data")
