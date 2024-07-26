@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_detail">
+
+    <TextView
+        android:id="@+id/tvCurrentUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:text="Chưa giao"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAssignDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Từ ngày 10/10/2023 đến hiện nay"
+        android:layout_marginTop="@dimen/dimen_2dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tvCurrentUser"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentUser"
+        />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdCurrentUser"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssignDate" />
+
+    <TextView
+        android:id="@+id/tvAssignUser1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:text="DungNB"
+        android:textColor="@color/base_color"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/tvCurrentUser"
+        app:layout_constraintTop_toBottomOf="@+id/mdCurrentUser" />
+
+    <TextView
+        android:id="@+id/tvAssignDate1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="start"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="6/4/2023 - 10/1/2023"
+        android:layout_marginTop="@dimen/dimen_2dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvAssignUser1"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssignUser1" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdAssignUser1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="@id/tvCurrentUser"
+        app:layout_constraintEnd_toEndOf="@id/tvCurrentUser"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssignDate1" />
+
+    <TextView
+        android:id="@+id/tvAssignUser2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CuongNM"
+        android:textColor="@color/base_color"
+        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dimen_12dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tvCurrentUser"
+        app:layout_constraintTop_toBottomOf="@+id/mdAssignUser1" />
+
+    <TextView
+        android:id="@+id/tvAssignDate2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="20/8/2022 - 6/4/2023"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/dimen_2dp"
+        app:layout_constraintEnd_toEndOf="@id/tvCurrentUser"
+        android:paddingBottom="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="@+id/tvCurrentUser"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssignUser2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
