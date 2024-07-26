@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnAssetDetail" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAssetAddress"
+        android:id="@+id/btn_asset_location"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="@dimen/dimen_16dp"

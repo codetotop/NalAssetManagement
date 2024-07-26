@@ -6,8 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetInfoBinding
+import com.example.nalassetmanagement.model.AssetLocation
 import com.example.nalassetmanagement.screen.asset_info.asset_depreciation.AssetDepreciationActivity
 import com.example.nalassetmanagement.screen.asset_info.asset_detail.AssetDetailActivity
+import com.example.nalassetmanagement.screen.asset_info.asset_location.AssetLocationActivity
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
 
 class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
@@ -38,6 +40,10 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
         }
         binding.btnAssetDepreciation.setOnClickListener {
             val intent = Intent(this, AssetDepreciationActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnAssetLocation.setOnClickListener {
+            val intent = Intent(this, AssetLocationActivity::class.java)
             startActivity(intent)
         }
     }

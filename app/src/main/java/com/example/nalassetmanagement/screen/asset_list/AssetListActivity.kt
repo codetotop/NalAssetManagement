@@ -11,6 +11,7 @@ import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
 import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.Data
 import com.example.nalassetmanagement.model.ListAsset
+import com.example.nalassetmanagement.screen.asset_filter.AssetFilterActivity
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -50,6 +51,10 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     private fun addListener() {
         binding.abvAssetList.setActionBarViewListener(this)
+        binding.imgFilter.setOnClickListener {
+            val intent = Intent(this, AssetFilterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun loginSuccess(data: Data) {

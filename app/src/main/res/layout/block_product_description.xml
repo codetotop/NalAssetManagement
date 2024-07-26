@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_bottom_detail">
+    android:background="@drawable/bg_box_detail">
 
     <TextView
         android:id="@+id/tvTitleDescription"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_20dp"
-        android:src="@drawable/ic_add_box"
+        android:src="@drawable/ic_add_box_blue"
         app:layout_constraintBottom_toBottomOf="@+id/tvTitleDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitleDescription" />
@@ -64,6 +64,9 @@
         android:id="@+id/mdProductDes"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1dp"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/color_bg_base"
         app:layout_constraintTop_toBottomOf="@+id/tvProducer" />
 
@@ -98,6 +101,9 @@
         android:id="@+id/mdSerialDes"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1dp"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleModel"/>
 
     <TextView

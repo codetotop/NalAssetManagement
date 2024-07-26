@@ -23,6 +23,8 @@
         <activity
             android:name=".screen.asset_info.asset_depreciation.AssetDepreciationActivity"
             android:exported="false" />
+        <activity android:name=".screen.asset_info.asset_location.AssetLocationActivity"/>
+        <activity android:name=".screen.asset_filter.AssetFilterActivity"/>
         <activity
             android:name=".screen.asset_list.AssetListActivity"
             android:exported="true">

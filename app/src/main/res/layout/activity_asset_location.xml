@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_bg_base"
+    android:orientation="vertical"
+    tools:context=".screen.asset_info.asset_location.AssetLocationActivity">
+
+    <com.example.nalassetmanagement.view.custom.ActionBarView
+        android:id="@+id/abvAssetLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:img_left="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:img_right="@drawable/ic_add_box_white"
+        app:title="@string/location" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvLocationList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/dimen_10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_location"
+        app:layout_constraintTop_toBottomOf="@+id/abvAssetLocation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

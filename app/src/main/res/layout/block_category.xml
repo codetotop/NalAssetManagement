@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_bottom_detail">
+    android:background="@drawable/bg_box_detail">
 
     <TextView
         android:id="@+id/tvTitleCategory"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_20dp"
-        android:src="@drawable/ic_add_box"
+        android:src="@drawable/ic_add_box_blue"
         app:layout_constraintBottom_toBottomOf="@+id/tvTitleCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitleCategory" />

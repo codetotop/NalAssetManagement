@@ -37,4 +37,7 @@
     <string name="remaining_value">Giá trị còn lại</string>
     <string name="this_year">Năm nay</string>
     <string name="old_year">Những năm trước</string>
+    <string name="location">Vị trí</string>
+    <string name="location_info">%1s Đã giao cho %2s tại %3s</string>
+    <string name="filter_condition">Điều kiện lọc tài sản</string>
 </resources>
