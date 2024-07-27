@@ -94,7 +94,8 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     override fun onItemClick(position: Int) {
         val intent = Intent(this, AssetInfoActivity::class.java)
-        intent.putExtra(Constants.KEY_ID, assetListResponses[position].id)
+        intent.putExtra(Constants.KEY_ASSET_ID, assetListResponses[position].id)
+        intent.putExtra(Constants.KEY_CATEGORY_ID, assetListResponses[position].categoryId)
         startActivity(intent)
     }
 }

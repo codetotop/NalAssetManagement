@@ -3,9 +3,7 @@ package com.example.nalassetmanagement.screen.asset_info
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetInfoBinding
@@ -34,14 +32,16 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
     }
 
     private fun initView() {
-        binding.imgAssetPhoto.loadWithPicasso("")
+        val extras = intent.extras
+        val categoryId = extras?.getInt(Constants.KEY_CATEGORY_ID, -1) ?: -1
+        binding.imgAssetPhoto.loadWithPicasso("", categoryId)
     }
 
     private fun callApi() {
         val extras = intent.extras
-        val id = extras?.getInt(Constants.KEY_ID, -1) ?: -1
+        val assetId = extras?.getInt(Constants.KEY_ASSET_ID, -1) ?: -1
         presenter = AssetInfoPresenter(this)
-        presenter.fetchAssetDetail(id)
+        presenter.fetchAssetDetail(assetId)
     }
 
     private fun addListener() {

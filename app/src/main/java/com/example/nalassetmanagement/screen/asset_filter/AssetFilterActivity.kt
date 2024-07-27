@@ -212,6 +212,7 @@ class AssetFilterActivity : AppCompatActivity(), AssetFilterContract.View,
 
     override fun fetchFilterListSuccess(filterList: FilterList?) {
         binding.loading.visibility = View.GONE
+        Toast.makeText(this, "Lấy thông tin thành công!", Toast.LENGTH_SHORT).show()
         filterList?.let {
             loadUser(it.user)
             loadCategory(it.category)
