@@ -4,41 +4,87 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.widget.addTextChangedListener
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.common.Constants
-import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
-import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.Data
+import com.example.nalassetmanagement.model.local.ObjectFilter
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.server.AssetList
 import com.example.nalassetmanagement.screen.asset_filter.AssetFilterActivity
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
 import com.example.nalassetmanagement.screen.inventory.InventoryActivity
+import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
+
 class AssetListActivity : AppCompatActivity(), AssetListContract.View,
     ActionBarView.ActionBarViewListener,
-    AssetListAdapter.OnClickListener {
+    AssetListAdapter.AssetListEventListener {
 
     private lateinit var presenter: AssetListContract.Presenter
     private lateinit var binding: ActivityAssetListBinding
 
     private lateinit var assetListResponses: List<Asset>
     private lateinit var assetListAdapter: AssetListAdapter
+
+    private val filterLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data?.extras
+
+            data?.let {
+                val userFilter = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    it.getSerializable(Constants.KEY_FILTER_USER, ObjectFilter::class.java)
+                } else {
+                    it.getSerializable(Constants.KEY_FILTER_USER) as ObjectFilter?
+                }
+                val categoryFilter = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    it.getSerializable(
+                        Constants.KEY_FILTER_CATEGORY,
+                        ObjectFilter::class.java
+                    )
+                } else {
+                    it.getSerializable(Constants.KEY_FILTER_CATEGORY) as ObjectFilter?
+                }
+                val addressFilter = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    it.getSerializable(
+                        Constants.KEY_FILTER_ADDRESS,
+                        ObjectFilter::class.java
+                    )
+                } else {
+                    it.getSerializable(Constants.KEY_FILTER_ADDRESS) as ObjectFilter?
+                }
+                val producerFilter = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    it.getSerializable(
+                        Constants.KEY_FILTER_PRODUCER,
+                        ObjectFilter::class.java
+                    )
+                } else {
+                    it.getSerializable(Constants.KEY_FILTER_PRODUCER) as ObjectFilter?
+                }
+
+                assetListAdapter.filterList(assetListResponses, user = userFilter, category = categoryFilter, address = addressFilter, producer = producerFilter)
+
+            }
+        }
+    }
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -108,16 +154,17 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         binding.abvAssetList.setActionBarViewListener(this)
         binding.swRefreshAssetList.setOnRefreshListener {
             binding.swRefreshAssetList.isRefreshing = false
+            binding.edtSearch.text?.clear()
             presenter.fetchAssetList(1)
         }
 
-        binding.edtSearch.addTextChangedListener(object: TextWatcher {
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // Do Nothing
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                assetListAdapter.filter(assetListResponses, s.toString())
+                assetListAdapter.searchEditText(assetListResponses, s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -127,7 +174,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         })
         binding.imgFilter.setOnClickListener {
             val intent = Intent(this, AssetFilterActivity::class.java)
-            startActivity(intent)
+            filterLauncher.launch(intent)
         }
 
         binding.imgQrCode.setOnClickListener {
@@ -198,5 +245,13 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         intent.putExtra(Constants.KEY_ASSET_ID, assetListResponses[position].id)
         intent.putExtra(Constants.KEY_CATEGORY_ID, assetListResponses[position].categoryId)
         startActivity(intent)
+    }
+
+    override fun onAssetListChange(list: List<Asset>) {
+        if (list.isEmpty()) {
+            binding.tvNoData.visibility = View.VISIBLE
+        } else {
+            binding.tvNoData.visibility = View.GONE
+        }
     }
 }

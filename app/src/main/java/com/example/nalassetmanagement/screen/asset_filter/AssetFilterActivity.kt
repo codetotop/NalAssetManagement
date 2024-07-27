@@ -1,21 +1,24 @@
 package com.example.nalassetmanagement.screen.asset_filter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nalassetmanagement.R
+import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.common.selectedPosition
 import com.example.nalassetmanagement.common.singleSelected
 import com.example.nalassetmanagement.databinding.ActivityAssetFilterBinding
 import com.example.nalassetmanagement.model.local.AssetFilter
+import com.example.nalassetmanagement.model.local.ObjectFilter
 import com.example.nalassetmanagement.model.server.FilterList
 import com.example.nalassetmanagement.model.server.KeyValue
 import com.example.nalassetmanagement.model.server.User
-import com.example.nalassetmanagement.model.local.ObjectFilter
 import com.example.nalassetmanagement.screen.asset_filter.bottom_sheet_adapter.ObjectFilterAdapter
+import com.example.nalassetmanagement.screen.asset_list.AssetListActivity
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -70,7 +73,23 @@ class AssetFilterActivity : AppCompatActivity(), AssetFilterContract.View,
     }
 
     override fun onClickRightButton() {
+        val intent = Intent(
+            this,
+            AssetListActivity::class.java
+        )
+        intent.putExtra("result", "text.getText().toString()")
 
+        val userFilter = filterUserList[filterUserList.selectedPosition()]
+        val categoryFilter = filterCategoryList[filterCategoryList.selectedPosition()]
+        val addressFilter = filterAddressList[filterAddressList.selectedPosition()]
+        val producerFilter = filterProducerList[filterProducerList.selectedPosition()]
+
+        intent.putExtra(Constants.KEY_FILTER_USER, userFilter)
+        intent.putExtra(Constants.KEY_FILTER_CATEGORY, categoryFilter)
+        intent.putExtra(Constants.KEY_FILTER_ADDRESS, addressFilter)
+        intent.putExtra(Constants.KEY_FILTER_PRODUCER, producerFilter)
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
     @SuppressLint("MissingInflatedId")
