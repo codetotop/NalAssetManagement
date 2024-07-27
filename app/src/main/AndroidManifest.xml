@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +29,8 @@
         <activity
             android:name=".screen.asset_info.asset_depreciation.AssetDepreciationActivity"
             android:exported="false" />
-        <activity android:name=".screen.asset_info.asset_location.AssetLocationActivity"/>
-        <activity android:name=".screen.asset_filter.AssetFilterActivity"/>
+        <activity android:name=".screen.asset_info.asset_location.AssetLocationActivity" />
+        <activity android:name=".screen.asset_filter.AssetFilterActivity" />
         <activity
             android:name=".screen.asset_list.AssetListActivity"
             android:exported="true">
@@ -34,6 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
     </application>
 
 </manifest>

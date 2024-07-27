@@ -1,11 +1,16 @@
 package com.example.nalassetmanagement.screen.asset_info.asset_detail
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.common.Constants
@@ -19,6 +24,10 @@ import com.example.nalassetmanagement.model.server.KeyValue
 import com.example.nalassetmanagement.screen.asset_filter.bottom_sheet_adapter.ObjectFilterAdapter
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
+
 
 class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
     ActionBarView.ActionBarViewListener {
@@ -29,6 +38,41 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
     private var assetDetail: Asset? = null
     private lateinit var statusList: ArrayList<ObjectFilter>
     private lateinit var statusAdapter: ObjectFilterAdapter
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                showCamera()
+            } else {
+                // Show why you need permission
+            }
+        }
+
+    private val qrCodeLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
+        ScanContract()
+    ) { result: ScanIntentResult ->
+        if (result.contents == null) {
+            Toast.makeText(this@AssetDetailActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG).show()
+        } else {
+            presenter.updateStatusAsset(assetDetail.id, "qr")
+            Toast.makeText(
+                this@AssetDetailActivity,
+                "Scanned: " + result.contents,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun showCamera() {
+        val options = ScanOptions()
+        options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+        options.setPrompt("Scan QR code")
+        options.setCameraId(0) // Use a specific camera of the device
+        options.setBeepEnabled(false)
+        options.setBarcodeImageEnabled(true)
+        options.setOrientationLocked(false)
+        qrCodeLauncher.launch(options)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +115,24 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
 
         binding.blockStatus.imgUpdateStatus.setOnClickListener {
             showStatusBottomSheet()
+        }
+
+        binding.blockQrCode.imgQrCode.setOnClickListener {
+            checkPermissionEndShowActivity(this)
+        }
+    }
+
+    private fun checkPermissionEndShowActivity(context: Context) {
+        if (ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            showCamera()
+        } else if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
     }
 
