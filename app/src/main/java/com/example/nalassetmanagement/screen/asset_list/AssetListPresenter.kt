@@ -3,11 +3,12 @@ package com.example.nalassetmanagement.screen.asset_list
 import com.example.nalassetmanagement.api.ApiRepository
 import com.example.nalassetmanagement.model.server.AssetListResponse
 import com.example.nalassetmanagement.model.LoginData
+import com.example.nalassetmanagement.model.server.Asset
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AssetListPresenter(private val mainView: AssetListContract.View) : AssetListContract.Presenter {
+class AssetListPresenter(private val view: AssetListContract.View) : AssetListContract.Presenter {
     private val apiRepository: ApiRepository = ApiRepository()
 
     override fun login(displayName: String, password: String) {
@@ -15,15 +16,15 @@ class AssetListPresenter(private val mainView: AssetListContract.View) : AssetLi
             override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
                 response.body()?.let { body ->
                     if (response.isSuccessful && body.status == 200) {
-                        mainView.loginSuccess(body.data)
+                        view.loginSuccess(body.data)
                     } else {
-                        mainView.loginFailure()
+                        view.loginFailure()
                     }
                 }
             }
 
             override fun onFailure(call: Call<LoginData>, t: Throwable) {
-                mainView.loginFailure()
+                view.loginFailure()
             }
         })
     }
@@ -33,20 +34,29 @@ class AssetListPresenter(private val mainView: AssetListContract.View) : AssetLi
             override fun onResponse(call: Call<AssetListResponse>, response: Response<AssetListResponse>) {
                 response.body()?.let { body ->
                     if (response.isSuccessful) {
-                        mainView.fetchAssetListSuccess(body.data)
+                        view.fetchAssetListSuccess(body.data)
                     } else {
-                        mainView.fetchAssetListFailure()
+                        view.fetchAssetListFailure()
                     }
                 }
             }
 
             override fun onFailure(call: Call<AssetListResponse>, t: Throwable) {
-                mainView.fetchAssetListFailure()
+                view.fetchAssetListFailure()
             }
         })
     }
 
-    override fun searchQr(qrText: String) {
+    override fun searchQr(qrText: String, assetListResponses: List<Asset>) {
+        var asset: Asset? = null
+        for (assetTemp in assetListResponses) {
+            if (qrText.trim() == assetTemp.qrCode)  asset = assetTemp
+        }
 
+        if (asset == null) {
+            view.searchQrFailure()
+        } else {
+            view.searchQrSuccess(asset)
+        }
     }
 }
