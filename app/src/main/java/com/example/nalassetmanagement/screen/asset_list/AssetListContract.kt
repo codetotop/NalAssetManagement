@@ -1,6 +1,7 @@
 package com.example.nalassetmanagement.screen.asset_list
 
 import com.example.nalassetmanagement.model.Data
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.server.AssetList
 
 interface AssetListContract {
@@ -10,7 +11,7 @@ interface AssetListContract {
 
         fun fetchAssetList(page: Int)
 
-        fun searchQr(qrText: String)
+        fun searchQr(qrText: String, assetListResponses: List<Asset>)
     }
 
     interface View {
@@ -20,7 +21,7 @@ interface AssetListContract {
         fun fetchAssetListSuccess(data: AssetList?)
         fun fetchAssetListFailure()
 
-        fun searchQrSuccess()
+        fun searchQrSuccess(asset: Asset)
         fun searchQrFailure()
     }
 }

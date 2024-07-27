@@ -54,7 +54,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
                 .show()
         } else {
             binding.loading.visibility = View.VISIBLE
-            presenter.searchQr(result.contents)
+            presenter.searchQr(result.contents, assetListResponses)
         }
     }
 
@@ -144,12 +144,14 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         Toast.makeText(this, getString(R.string.msg_call_api_failure), Toast.LENGTH_SHORT).show()
     }
 
-    override fun searchQrSuccess() {
-
+    override fun searchQrSuccess(asset: Asset) {
+        binding.loading.visibility = View.GONE
+        Toast.makeText(this, "Mã qr hợp lệ!" + asset.qrCode, Toast.LENGTH_SHORT).show()
     }
 
     override fun searchQrFailure() {
-
+        binding.loading.visibility = View.GONE
+        Toast.makeText(this, "Mã qr không hợp lệ hoặc tài sản không có trong danh sách!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onClickLeftButton() {
