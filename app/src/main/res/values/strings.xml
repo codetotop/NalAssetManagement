@@ -10,4 +10,13 @@
     <string name="asset_detail">Chi tiết tài sản</string>
     <string name="asset_depreciation_detail">Chi tiết khấu hao tài sản</string>
     <string name="asset_address_detail">Vị trí tài sản</string>
+
+    <string name="label_liquidation">Xin thanh lý</string>
+    <string name="label_type_least">Kém</string>
+    <string name="label_type_nomal">Bình thường</string>
+    <string name="label_type_good">Tốt</string>
+    <string name="select_type">Chọn tình trạng</string>
+    <string name="input_note">Nhập ghi chú</string>
+    <string name="label_list_inventory">Các đợt kiểm kê hiện hành</string>
+    <string name="label_list_inventory_end">Các đợt kiểm kê đã kết thúc</string>
 </resources>

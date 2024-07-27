@@ -12,6 +12,7 @@ import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.Data
 import com.example.nalassetmanagement.model.ListAsset
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
+import com.example.nalassetmanagement.screen.inventory.InventoryActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
@@ -78,7 +79,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
     }
 
     override fun onClickRightButton() {
-        Toast.makeText(this, "Right click", Toast.LENGTH_LONG).show()
+        startActivity(Intent(this, InventoryActivity::class.java))
     }
 
     override fun onItemClick(position: Int) {

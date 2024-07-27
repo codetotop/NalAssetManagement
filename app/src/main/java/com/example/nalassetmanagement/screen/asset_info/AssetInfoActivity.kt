@@ -1,10 +1,12 @@
 package com.example.nalassetmanagement.screen.asset_info
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetInfoBinding
+import com.example.nalassetmanagement.screen.inventory.InventoryActivity
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
 
 class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,

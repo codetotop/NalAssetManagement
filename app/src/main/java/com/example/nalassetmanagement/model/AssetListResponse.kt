@@ -1,6 +1,8 @@
 package com.example.nalassetmanagement.model
 
+import com.example.nalassetmanagement.room.entity.AssetEntity
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import kotlin.collections.List
 
 class AssetListResponse : BaseResponse<ListAsset>()
@@ -69,11 +71,33 @@ data class Asset(
     val status: KeyValue? = null,
     @SerializedName("user")
     val user: KeyValue? = null,
-)
+) {
+    fun toAssetEntity(): AssetEntity {
+        return AssetEntity(
+            name = name,
+            qrCode = qrCode,
+            addressId = addressId,
+            statusId = statusId,
+            categoryId = categoryId,
+            producerId = producerId,
+            modelId = modelId,
+            createdAt = createdAt,
+            updatedAt = updatedAt,
+            deletedAt = deletedAt,
+            userId = userId,
+            category = category?.name,
+            address = address?.name,
+            models = models?.name,
+            producer = producer?.name,
+            status = status?.name,
+            user = user?.name
+        )
+    }
+}
 
 data class KeyValue(
     @SerializedName("id")
     val id: Int? = null,
     @SerializedName("name")
     val name: String? = null
-)
+): Serializable

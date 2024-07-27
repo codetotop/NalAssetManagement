@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".base.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,6 +24,8 @@
         <activity
             android:name=".screen.asset_info.asset_depreciation.AssetDepreciationActivity"
             android:exported="false" />
+        <activity android:name=".screen.inventory.InventoryActivity"
+            android:exported="false"/>
         <activity
             android:name=".screen.asset_list.AssetListActivity"
             android:exported="true">
@@ -32,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screen.inventory.inventory_detail.InventorySessionDetailActivity"/>
     </application>
 
 </manifest>

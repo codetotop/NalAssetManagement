@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/all"
+        android:title="Tất cả"/>
+    <item android:id="@+id/kosmo"
+        android:title="Kosmo"/>
+    <item android:id="@+id/nal_bulding"
+        android:title="NAL Thiên Hiền"/>
+</menu>
