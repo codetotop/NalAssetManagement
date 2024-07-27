@@ -2,8 +2,9 @@ package com.example.nalassetmanagement.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.nalassetmanagement.model.Asset
-import com.example.nalassetmanagement.model.KeyValue
+import com.example.nalassetmanagement.model.server.Asset
+import com.example.nalassetmanagement.model.server.KeyValue
+import com.example.nalassetmanagement.model.server.User
 
 @Entity(tableName = "asset")
 data class AssetEntity(
@@ -61,8 +62,16 @@ data class AssetEntity(
             address = KeyValue(name = address),
             models = KeyValue(name = models),
             producer = KeyValue(name = producer),
-            status = KeyValue(name = status),
-            user = KeyValue(name = user),
+            status = KeyValue(name = status,id = getIdStatus(status)),
+            user = User(userName = user),
         )
+    }
+    private  fun getIdStatus(status: String?) :Int {
+        return when(true) {
+            ("Tệ" == status) -> 3
+            ("Bình thường" == status) -> 2
+            ("Tốt" == status) -> 1
+            else -> 4
+        }
     }
 }

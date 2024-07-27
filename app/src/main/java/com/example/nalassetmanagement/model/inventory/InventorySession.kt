@@ -1,6 +1,6 @@
 package com.example.nalassetmanagement.model.inventory
 
-import com.example.nalassetmanagement.model.KeyValue
+import com.example.nalassetmanagement.model.server.User
 import com.example.nalassetmanagement.room.entity.InventorySessionEntity
 import java.io.Serializable
 
@@ -9,7 +9,7 @@ data class InventorySession(
     val locationInventory: String? = null,
     val startDate: String? = null,
     val endDate: String? = null,
-    val user: KeyValue? = null,
+    val user: User? = null,
     val status: String? = null,
 ) : Serializable {
     fun toInventorySessionEntity(): InventorySessionEntity {

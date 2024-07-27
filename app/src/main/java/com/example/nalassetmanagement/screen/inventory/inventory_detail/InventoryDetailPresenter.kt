@@ -2,8 +2,8 @@ package com.example.nalassetmanagement.screen.inventory.inventory_detail
 
 import android.app.Activity
 import com.example.nalassetmanagement.extension.mapDataToEntity
-import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.inventory.InventorySession
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.room.database.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -65,7 +65,7 @@ class InventoryDetailPresenter(private val view: InventoryDetailContract.View) :
         listAssetsInventorySession: MutableList<InventorySession>
     ): MutableList<Asset> {
         val listIDChecked = listAssetsInventorySession.mapNotNull { it.id }.toSet()
-        return listAssets.filter { asset -> asset.id?.toIntOrNull() in listIDChecked }
+        return listAssets.filter { asset -> asset.id in listIDChecked }
             .toMutableList()
     }
 
@@ -74,7 +74,7 @@ class InventoryDetailPresenter(private val view: InventoryDetailContract.View) :
         listAssetsInventorySession: MutableList<InventorySession>
     ): MutableList<Asset> {
         val listIDChecked = listAssetsInventorySession.mapNotNull { it.id }.toSet()
-        return listAssets.filter { asset -> asset.id?.toIntOrNull() !in listIDChecked }
+        return listAssets.filter { asset -> asset.id !in listIDChecked }
             .toMutableList()
     }
 }

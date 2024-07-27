@@ -3,7 +3,7 @@ package com.example.nalassetmanagement.room.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.nalassetmanagement.model.inventory.InventorySession
-import com.example.nalassetmanagement.model.KeyValue
+import com.example.nalassetmanagement.model.server.User
 
 @Entity(tableName = "inventory_session")
 data class InventorySessionEntity (
@@ -22,7 +22,7 @@ data class InventorySessionEntity (
             startDate = startDate,
             endDate = endDate,
             status = status,
-            user = KeyValue(name = "admin")
+            user = User(userName = "admin")
         )
     }
 }

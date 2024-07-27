@@ -90,7 +90,7 @@ data class Asset(
             models = models?.name,
             producer = producer?.name,
             status = status?.name,
-            user = user?.name
+            user = user?.userName
         )
     }
 }

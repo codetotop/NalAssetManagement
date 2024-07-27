@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ItemAssetBinding
-import com.example.nalassetmanagement.databinding.ItemInventorySessionBinding
-import com.example.nalassetmanagement.model.Asset
-import com.example.nalassetmanagement.model.inventory.InventorySession
+import com.example.nalassetmanagement.model.server.Asset
+import com.example.nalassetmanagement.model.server.KeyValue
+import com.example.nalassetmanagement.view.extension.loadWithPicasso
 
 class InventorySessionDetailsAdapter(val onClickItemAsset : OnClickItemAsset) :
     ListAdapter<Asset, InventorySessionDetailsAdapter.ViewHolder>(InventorySessionDiffCallback()) {
@@ -31,9 +32,13 @@ class InventorySessionDetailsAdapter(val onClickItemAsset : OnClickItemAsset) :
         fun bind(item: Asset) {
             binding.apply {
                 binding.tvAssetName.text = item.name
-                binding.tvUser.text = item.user?.name ?: "Đang trống"
-                binding.tvAddress.setText(item.user?.name)
-                binding.tvStatus.text = item.status?.name?: "Đã bán"
+                binding.tvUser.text = item.user?.userName ?: "Đang trống"
+                binding.tvAddress.setText(item.address?.name)
+                binding.tvStatus.text = item.status?.name?: "Tốt"
+                binding.tvStatus.let {
+                    binding.tvStatus.setBackgroundResource(backgroundStatus(status = item.status))
+                }
+                binding.imgAssetAvatar.loadWithPicasso("", 1)
             }
         }
     }
@@ -50,5 +55,28 @@ class InventorySessionDetailsAdapter(val onClickItemAsset : OnClickItemAsset) :
 
     interface OnClickItemAsset {
         fun onClickItemAsset(item: Asset)
+    }
+    fun backgroundStatus(status: KeyValue?): Int {
+        when (status?.id) {
+            1 -> {
+                return R.drawable.bg_tv_status_green_light
+            }
+
+            2 -> {
+                return R.drawable.bg_tv_status_yellow
+            }
+
+            3 -> {
+                return R.drawable.bg_tv_status_red
+            }
+
+            4, 5 -> {
+                return R.drawable.bg_tv_status_green_dark
+            }
+
+            else -> {
+                return R.drawable.bg_tv_status_gray
+            }
+        }
     }
 }

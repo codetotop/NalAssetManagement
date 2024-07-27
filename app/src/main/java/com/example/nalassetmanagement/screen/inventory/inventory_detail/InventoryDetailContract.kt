@@ -1,7 +1,7 @@
 package com.example.nalassetmanagement.screen.inventory.inventory_detail
 
-import com.example.nalassetmanagement.model.Asset
 import com.example.nalassetmanagement.model.inventory.InventorySession
+import com.example.nalassetmanagement.model.server.Asset
 
 interface InventoryDetailContract {
 

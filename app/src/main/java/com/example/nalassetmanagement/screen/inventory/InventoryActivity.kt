@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nalassetmanagement.databinding.ActivityInventoryBinding
-import com.example.nalassetmanagement.model.Asset
+
 import com.example.nalassetmanagement.model.inventory.InventorySession
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.screen.inventory.inventory_detail.InventoryBottomSheet
 import com.example.nalassetmanagement.screen.inventory.inventory_detail.InventorySessionDetailActivity
 
