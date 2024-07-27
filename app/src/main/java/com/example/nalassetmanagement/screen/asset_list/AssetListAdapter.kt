@@ -9,8 +9,10 @@ import com.example.nalassetmanagement.databinding.ItemAssetBinding
 import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.server.KeyValue
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
+import java.util.Locale
 
-class AssetListAdapter(private var list: List<Asset>, private var listener: OnClickListener) :
+
+class AssetListAdapter(var list: List<Asset>, private var listener: OnClickListener) :
     RecyclerView.Adapter<AssetListAdapter.AssetListViewHolder>() {
 
     class AssetListViewHolder(val binding: ItemAssetBinding) :
@@ -52,7 +54,7 @@ class AssetListAdapter(private var list: List<Asset>, private var listener: OnCl
         }
     }
 
-    fun backgroundStatus(status: KeyValue): Int {
+    private fun backgroundStatus(status: KeyValue): Int {
         when (status.id) {
             1 -> {
                 return R.drawable.bg_tv_status_green_light
@@ -74,6 +76,20 @@ class AssetListAdapter(private var list: List<Asset>, private var listener: OnCl
                 return R.drawable.bg_tv_status_gray
             }
         }
+    }
+
+    fun filter(list: List<Asset>, text: String) {
+        val temp: MutableList<Asset> = ArrayList()
+        for (d in list) {
+            val lDapName = d.user?.userName?.trim()?.lowercase(Locale.ROOT)
+            val assetName = d.name?.trim()?.lowercase(Locale.ROOT)
+            val textLowerCase = text.trim().lowercase(Locale.ROOT)
+            if (lDapName?.contains(textLowerCase) == true || assetName?.contains(textLowerCase) == true) {
+                temp.add(d)
+            }
+        }
+
+        replaceList(temp)
     }
 
     interface OnClickListener {
