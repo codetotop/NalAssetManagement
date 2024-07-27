@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDescription" />
 
     <TextView
-        android:id="@+id/tvProducer"
+        android:id="@+id/tvTitleProducer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mdStatus" />
 
     <TextView
+        android:id="@+id/tvProducer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_12dp"
@@ -55,10 +56,10 @@
         android:maxLines="1"
         android:text="@string/apple"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/tvProducer"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleProducer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvProducer"
-        app:layout_constraintTop_toTopOf="@+id/tvProducer" />
+        app:layout_constraintStart_toEndOf="@+id/tvTitleProducer"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleProducer" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/mdProductDes"
@@ -68,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/color_bg_base"
-        app:layout_constraintTop_toBottomOf="@+id/tvProducer" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleProducer" />
 
     <TextView
         android:id="@+id/tvTitleModel"

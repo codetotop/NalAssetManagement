@@ -6,11 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.nalassetmanagement.R
+import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
-import com.example.nalassetmanagement.model.Asset
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.Data
-import com.example.nalassetmanagement.model.AssetList
+import com.example.nalassetmanagement.model.server.AssetList
 import com.example.nalassetmanagement.screen.asset_filter.AssetFilterActivity
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
 import kotlinx.coroutines.delay
@@ -37,8 +39,8 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         super.onCreate(savedInstanceState)
         binding = ActivityAssetListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = AssetListPresenter(this)
         initView()
+        callApi()
         addListener()
     }
 
@@ -46,6 +48,10 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         binding.loading.visibility = View.VISIBLE
         assetListAdapter = AssetListAdapter(listOf(), this)
         binding.rcvAssetList.adapter = assetListAdapter
+    }
+
+    private fun callApi() {
+        presenter = AssetListPresenter(this)
         presenter.fetchAssetList(1)
     }
 
@@ -75,20 +81,20 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     override fun fetchAssetListFailure() {
         binding.loading.visibility = View.GONE
-        Toast.makeText(this, "Lấy thông tin không thành công!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.msg_call_api_failure), Toast.LENGTH_SHORT).show()
     }
 
     override fun onClickLeftButton() {
-        Toast.makeText(this, "Left click", Toast.LENGTH_LONG).show()
+
     }
 
     override fun onClickRightButton() {
-        Toast.makeText(this, "Right click", Toast.LENGTH_LONG).show()
+
     }
 
     override fun onItemClick(position: Int) {
         val intent = Intent(this, AssetInfoActivity::class.java)
-        //intent.put(assetListResponses[position])
+        intent.putExtra(Constants.KEY_ID, assetListResponses[position].id)
         startActivity(intent)
     }
 }

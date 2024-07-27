@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/imgQrCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_20dp"
@@ -52,7 +53,7 @@
         android:gravity="end"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="https://www.google.com/"
+        android:text="https:***"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/tvQrCode"
         app:layout_constraintEnd_toEndOf="parent"

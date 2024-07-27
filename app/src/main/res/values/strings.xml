@@ -40,4 +40,7 @@
     <string name="location">Vị trí</string>
     <string name="location_info">%1s Đã giao cho %2s tại %3s</string>
     <string name="filter_condition">Điều kiện lọc tài sản</string>
+    <string name="msg_call_api_failure">Lấy thông tin không thành công!</string>
+    <string name="close">Đóng</string>
+    <string name="update">Cập nhật</string>
 </resources>

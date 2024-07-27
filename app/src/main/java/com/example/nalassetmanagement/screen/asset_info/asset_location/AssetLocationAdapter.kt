@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ItemLocationBinding
-import com.example.nalassetmanagement.model.AssetLocation
+import com.example.nalassetmanagement.model.local.AssetLocation
 
 class AssetLocationAdapter(private val list: List<AssetLocation>) :
     Adapter<AssetLocationAdapter.AssetLocationViewHolder>() {

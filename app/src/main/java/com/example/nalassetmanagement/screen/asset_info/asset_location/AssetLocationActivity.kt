@@ -2,9 +2,8 @@ package com.example.nalassetmanagement.screen.asset_info.asset_location
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.nalassetmanagement.databinding.ActivityAssetDetailBinding
 import com.example.nalassetmanagement.databinding.ActivityAssetLocationBinding
-import com.example.nalassetmanagement.model.AssetLocation
+import com.example.nalassetmanagement.model.local.AssetLocation
 import com.example.nalassetmanagement.view.custom.ActionBarView
 
 class AssetLocationActivity : AppCompatActivity(), AssetLocationContract.View,

@@ -3,13 +3,10 @@ package com.example.nalassetmanagement.screen.asset_list
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ItemAssetBinding
-import com.example.nalassetmanagement.model.Asset
+import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
-import com.squareup.picasso.Picasso
 
 class AssetListAdapter(private var list: List<Asset>, private var listener: OnClickListener) :
     RecyclerView.Adapter<AssetListAdapter.AssetListViewHolder>() {
@@ -39,7 +36,7 @@ class AssetListAdapter(private var list: List<Asset>, private var listener: OnCl
             with(list[itemPosition]) {
                 binding.imgAssetAvatar.loadWithPicasso(qrCode)
                 binding.tvAssetName.text = name
-                binding.tvUser.text = user?.name ?: ""
+                binding.tvUser.text = user?.userName ?: ""
                 binding.tvAddress.text = address?.name ?: "LA"
                 binding.tvStatus.text = status?.name?: "Đã bán"
 

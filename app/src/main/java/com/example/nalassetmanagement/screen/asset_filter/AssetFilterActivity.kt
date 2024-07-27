@@ -7,12 +7,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nalassetmanagement.R
+import com.example.nalassetmanagement.common.selectedPosition
+import com.example.nalassetmanagement.common.singleSelected
 import com.example.nalassetmanagement.databinding.ActivityAssetFilterBinding
-import com.example.nalassetmanagement.model.AssetFilter
-import com.example.nalassetmanagement.model.FilterList
-import com.example.nalassetmanagement.model.KeyValue
-import com.example.nalassetmanagement.model.User
-import com.example.nalassetmanagement.model.ObjectFilter
+import com.example.nalassetmanagement.model.local.AssetFilter
+import com.example.nalassetmanagement.model.server.FilterList
+import com.example.nalassetmanagement.model.server.KeyValue
+import com.example.nalassetmanagement.model.server.User
+import com.example.nalassetmanagement.model.local.ObjectFilter
 import com.example.nalassetmanagement.screen.asset_filter.bottom_sheet_adapter.ObjectFilterAdapter
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -40,13 +42,13 @@ class AssetFilterActivity : AppCompatActivity(), AssetFilterContract.View,
         setContentView(binding.root)
 
         presenter = AssetFilterPresenter(this)
-        presenter.fetchData()
+        presenter.fetchFilterList()
         initView()
         addListener()
     }
 
     private fun initView() {
-        binding.loading.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
         adapter = AssetFilterAdapter(
             listOf(
                 AssetFilter(1, "Nhân viên sử dụng: ", ""),
@@ -222,8 +224,8 @@ class AssetFilterActivity : AppCompatActivity(), AssetFilterContract.View,
         filterUserList = arrayListOf()
         filterUserList.add(ObjectFilter(0, "None", false))
         for (index in users.indices) {
-            users[index].username?.let {
-                filterUserList.add(ObjectFilter(users[index].id, users[index].username, false))
+            users[index].userName?.let {
+                filterUserList.add(ObjectFilter(users[index].id, users[index].userName, false))
             }
 
             if (index > 2) return
@@ -327,19 +329,6 @@ class AssetFilterActivity : AppCompatActivity(), AssetFilterContract.View,
 
     override fun fetchFilterListFailure() {
         binding.loading.visibility = View.GONE
-        Toast.makeText(this, "Lấy thông tin thành công", Toast.LENGTH_LONG).show()
-    }
-
-    fun ArrayList<ObjectFilter>.selectedPosition(): Int {
-        for (index in indices) {
-            if (get(index).isSelected == true) return index
-        }
-        return 0
-    }
-
-    fun ArrayList<ObjectFilter>.singleSelected(position: Int) {
-        for (index in indices) {
-            get(index).isSelected = index == position
-        }
+        Toast.makeText(this, getString(R.string.msg_call_api_failure), Toast.LENGTH_SHORT).show()
     }
 }

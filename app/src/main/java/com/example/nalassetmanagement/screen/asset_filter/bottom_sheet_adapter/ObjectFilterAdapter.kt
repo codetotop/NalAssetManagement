@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ItemFitlerUserBinding
-import com.example.nalassetmanagement.model.ObjectFilter
+import com.example.nalassetmanagement.model.local.ObjectFilter
 
 class ObjectFilterAdapter(
     private val list: List<ObjectFilter>,

@@ -1,13 +1,17 @@
 package com.example.nalassetmanagement.screen.asset_info
 
+import com.example.nalassetmanagement.model.server.Asset
+
 interface AssetInfoContract {
 
     interface Presenter {
-        fun fetchData()
-        fun executeInventory()
+        fun fetchAssetDetail(id: Int)
+        fun fetchFilterList()
     }
 
     interface View {
-        fun loadData()
+        fun fetchAssetDetailSuccess(data: Asset?)
+
+        fun fetchAssetDetailFailure()
     }
 }

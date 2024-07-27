@@ -1,12 +1,11 @@
 package com.example.nalassetmanagement.screen.asset_filter
 
-import com.example.nalassetmanagement.model.FilterList
-import com.example.nalassetmanagement.model.FilterListResponse
+import com.example.nalassetmanagement.model.server.FilterList
 
 interface AssetFilterContract {
 
     interface Presenter {
-        fun fetchData()
+        fun fetchFilterList()
     }
 
     interface View {

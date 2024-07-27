@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.nalassetmanagement.databinding.ItemFilterBinding
-import com.example.nalassetmanagement.model.AssetFilter
+import com.example.nalassetmanagement.model.local.AssetFilter
 
 class AssetFilterAdapter(private val list: List<AssetFilter>, private val listener: OnClickListener) :
     Adapter<AssetFilterAdapter.AssetFilterViewHolder>() {

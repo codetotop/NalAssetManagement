@@ -1,7 +1,7 @@
 package com.example.nalassetmanagement.screen.asset_list
 
 import com.example.nalassetmanagement.model.Data
-import com.example.nalassetmanagement.model.AssetList
+import com.example.nalassetmanagement.model.server.AssetList
 
 interface AssetListContract {
 
