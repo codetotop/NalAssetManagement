@@ -11,7 +11,6 @@ import com.example.nalassetmanagement.model.server.KeyValue
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
 import java.util.Locale
 
-
 class AssetListAdapter(var list: List<Asset>, private var listener: OnClickListener) :
     RecyclerView.Adapter<AssetListAdapter.AssetListViewHolder>() {
 
