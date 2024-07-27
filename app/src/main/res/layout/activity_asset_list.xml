@@ -23,10 +23,10 @@
         android:layout_marginHorizontal="@dimen/dimen_10dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_edt_search"
+        android:backgroundTint="@null"
+        android:ellipsize="end"
         android:hint="@string/hint_search_asset"
         android:maxLines="1"
-        android:ellipsize="end"
-        android:backgroundTint="@null"
         android:paddingVertical="@dimen/dimen_15dp"
         android:paddingStart="@dimen/dimen_12dp"
         android:textColor="@color/base_color"
@@ -57,15 +57,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/edtSearch" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvAssetList"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swRefreshAssetList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dimen_10dp"
-        android:padding="@dimen/dimen_10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSearch">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvAssetList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:padding="@dimen/dimen_10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <ProgressBar
         android:id="@+id/loading"

@@ -9,9 +9,11 @@ import com.example.nalassetmanagement.model.inventory.InventorySession
 import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.screen.inventory.inventory_detail.InventoryBottomSheet
 import com.example.nalassetmanagement.screen.inventory.inventory_detail.InventorySessionDetailActivity
+import com.example.nalassetmanagement.view.custom.ActionBarView
 
 
-class InventoryActivity : AppCompatActivity(), InventoryContract.View {
+class InventoryActivity : AppCompatActivity(), InventoryContract.View,
+    ActionBarView.ActionBarViewListener {
     companion object {
         const val BUNDLE_TAG = "InventoryActivity"
     }
@@ -51,6 +53,7 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View {
         presenter = InventoryPresenter(this)
         presenter.getInventorySessions()
 
+        binding.toolbar.setActionBarViewListener(this)
         binding.recyclerViewInventory.adapter = adapterRcvInventoryInProgress
         binding.recyclerViewInventoryEnd.adapter = adapterRcvInventoryEnd
     }
@@ -73,6 +76,14 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View {
     }
 
     override fun getAssetsFromLocalError() {
+
+    }
+
+    override fun onClickLeftButton() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun onClickRightButton() {
 
     }
 

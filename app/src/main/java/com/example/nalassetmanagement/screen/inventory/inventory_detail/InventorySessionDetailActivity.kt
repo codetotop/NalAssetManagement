@@ -6,11 +6,13 @@ import com.example.nalassetmanagement.databinding.ActivityInventoryDetailsBindin
 import com.example.nalassetmanagement.model.inventory.InventorySession
 import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.screen.inventory.InventoryActivity
+import com.example.nalassetmanagement.view.custom.ActionBarView
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class InventorySessionDetailActivity : AppCompatActivity(), InventoryDetailContract.View {
+class InventorySessionDetailActivity : AppCompatActivity(), InventoryDetailContract.View,
+    ActionBarView.ActionBarViewListener {
 
     private lateinit var presenter: InventoryDetailContract.Presenter
 
@@ -37,6 +39,7 @@ class InventorySessionDetailActivity : AppCompatActivity(), InventoryDetailContr
         setContentView(binding.root)
         presenter = InventoryDetailPresenter(this)
 
+        binding.toolbar.setActionBarViewListener(this)
         binding.recyclerViewUnchecked.adapter = adapterRcvUnChecked
         binding.recyclerViewChecked.adapter = adapterRcvChecked
 
@@ -66,4 +69,11 @@ class InventorySessionDetailActivity : AppCompatActivity(), InventoryDetailContr
 
     }
 
+    override fun onClickLeftButton() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun onClickRightButton() {
+
+    }
 }

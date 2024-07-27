@@ -57,8 +57,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         ScanContract()
     ) { result: ScanIntentResult ->
         if (result.contents == null) {
-            Toast.makeText(this@AssetListActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG)
-                .show()
+            //Toast.makeText(this@AssetListActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG).show()
         } else {
             binding.loading.visibility = View.VISIBLE
             presenter.searchQr(result.contents, assetListResponses)
@@ -95,6 +94,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     private fun initView() {
         binding.loading.visibility = View.VISIBLE
+        assetListResponses = listOf()
         assetListAdapter = AssetListAdapter(listOf(), this)
         binding.rcvAssetList.adapter = assetListAdapter
     }
@@ -106,6 +106,10 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     private fun addListener() {
         binding.abvAssetList.setActionBarViewListener(this)
+        binding.swRefreshAssetList.setOnRefreshListener {
+            binding.swRefreshAssetList.isRefreshing = false
+            presenter.fetchAssetList(1)
+        }
 
         binding.edtSearch.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
