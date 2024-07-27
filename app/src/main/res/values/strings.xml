@@ -43,4 +43,5 @@
     <string name="msg_call_api_failure">Lấy thông tin không thành công!</string>
     <string name="close">Đóng</string>
     <string name="update">Cập nhật</string>
+    <string name="no_qr_code">Chưa có mã qr code</string>
 </resources>

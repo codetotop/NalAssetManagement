@@ -45,4 +45,8 @@ class AssetListPresenter(private val mainView: AssetListContract.View) : AssetLi
             }
         })
     }
+
+    override fun searchQr(qrText: String) {
+
+    }
 }

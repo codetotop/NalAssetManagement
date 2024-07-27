@@ -9,6 +9,8 @@ interface AssetListContract {
         fun login(displayName: String, password: String)
 
         fun fetchAssetList(page: Int)
+
+        fun searchQr(qrText: String)
     }
 
     interface View {
@@ -17,5 +19,8 @@ interface AssetListContract {
 
         fun fetchAssetListSuccess(data: AssetList?)
         fun fetchAssetListFailure()
+
+        fun searchQrSuccess()
+        fun searchQrFailure()
     }
 }

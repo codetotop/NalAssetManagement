@@ -44,22 +44,24 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
             if (isGranted) {
                 showCamera()
             } else {
-                // Show why you need permission
+                Toast.makeText(this@AssetDetailActivity, "Hãy mở Camera để quét mã!", Toast.LENGTH_LONG)
+                    .show()
             }
         }
 
-    private val qrCodeLauncher = registerForActivityResult<ScanOptions, ScanIntentResult>(
+    private val qrCodeLauncher = registerForActivityResult(
         ScanContract()
     ) { result: ScanIntentResult ->
         if (result.contents == null) {
-            Toast.makeText(this@AssetDetailActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@AssetDetailActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG)
+                .show()
         } else {
-            presenter.updateStatusAsset(assetDetail.id, "qr")
-            Toast.makeText(
-                this@AssetDetailActivity,
-                "Scanned: " + result.contents,
-                Toast.LENGTH_LONG
-            ).show()
+            binding.loading.visibility = View.VISIBLE
+            presenter.updateQrCodeAsset(
+                id = assetDetail?.id!!,
+                type = "qrcode",
+                value = result.contents
+            )
         }
     }
 
@@ -81,44 +83,45 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
         setContentView(binding.root)
 
         initView()
-        updateView()
         callApi()
         addListener()
     }
 
     private fun initView() {
         binding.loading.visibility = View.VISIBLE
-
-        val extras = intent.extras
-        assetDetail = extras?.getSerializable(Constants.KEY_ASSET_DETAIL) as Asset?
     }
 
     private fun updateView() {
-        binding.blockStatus.tvStatus.text = assetDetail?.status?.name ?: "Tốt"
-        binding.blockCategory.tvCategoryName.text = assetDetail?.category?.name ?: "Máy tính"
-        binding.blockProductDes.tvProducer.text = assetDetail?.producer?.name ?: "Apple Inc"
-        binding.blockProductDes.tvModel.text = assetDetail?.models?.name ?: "Mackbook Pro 038"
-        binding.blockProductOwner.tvProductOwner1.text =
-            assetDetail?.address?.name ?: "Nal building"
+        assetDetail?.let {
+            if (it.qrCode == null || it.qrCode.trim().isEmpty()) {
+                binding.blockQrCode.tvQrCode.text = getString(R.string.no_qr_code)
+            } else {
+                binding.blockQrCode.tvQrCode.text = it.qrCode
+            }
+            binding.blockStatus.tvStatus.text = it.status?.name ?: "Tốt"
+            binding.blockCategory.tvCategoryName.text = it.category?.name ?: "Máy tính"
+            binding.blockProductDes.tvProducer.text = it.producer?.name ?: "Apple Inc"
+            binding.blockProductDes.tvModel.text = it.models?.name ?: "Mackbook Pro 038"
+            binding.blockProductOwner.tvProductOwner1.text =
+                it.address?.name ?: "Nal building"
+        }
     }
 
     private fun callApi() {
+        val extras = intent.extras
+        val assetId = extras?.getInt(Constants.KEY_ASSET_ID, -1) ?: -1
         presenter = AssetDetailPresenter(this)
-        presenter.fetchFilterList()
+        presenter.fetchAssetDetail(assetId)
     }
 
     private fun addListener() {
         binding.abvAssetDetail.setActionBarViewListener(this)
         binding.blockQrCode.imgQrCode.setOnClickListener {
-
+            checkPermissionEndShowActivity(this)
         }
 
         binding.blockStatus.imgUpdateStatus.setOnClickListener {
             showStatusBottomSheet()
-        }
-
-        binding.blockQrCode.imgQrCode.setOnClickListener {
-            checkPermissionEndShowActivity(this)
         }
     }
 
@@ -213,14 +216,28 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
 
     }
 
+    override fun fetchAssetDetailSuccess(data: Asset?) {
+        assetDetail = data
+        presenter.fetchFilterList()
+    }
+
+    override fun fetchAssetDetailFailure() {
+        Toast.makeText(this, "Lấy thông tin không thành công thành công!", Toast.LENGTH_SHORT)
+            .show()
+        binding.loading.visibility = View.GONE
+    }
+
     override fun fetchFilterListSuccess(data: FilterList?) {
         binding.loading.visibility = View.GONE
+        updateView()
         loadStatusList(data?.status ?: listOf())
         Toast.makeText(this, "Lấy thông tin thành công!", Toast.LENGTH_SHORT).show()
     }
 
     override fun fetchFilterListFailure() {
+        updateView()
         binding.loading.visibility = View.GONE
+        Toast.makeText(this, "Lấy thông tin thành công!", Toast.LENGTH_SHORT).show()
     }
 
     override fun updateStatusSuccess() {
@@ -230,6 +247,18 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
     }
 
     override fun updateStatusFailure() {
+        binding.loading.visibility = View.GONE
         Toast.makeText(this, "Cập nhật trạng thái không thành công!", Toast.LENGTH_LONG).show()
+    }
+
+    override fun updateQrCodeSuccess(strQrCode: String) {
+        binding.loading.visibility = View.GONE
+        binding.blockQrCode.tvQrCode.text = strQrCode
+        Toast.makeText(this, "Cập nhật mã QrCode thành công!" + strQrCode, Toast.LENGTH_LONG).show()
+    }
+
+    override fun updateQrCodeFailure() {
+        binding.loading.visibility = View.GONE
+        Toast.makeText(this, "Cập nhật QrCode không thành công!", Toast.LENGTH_LONG).show()
     }
 }

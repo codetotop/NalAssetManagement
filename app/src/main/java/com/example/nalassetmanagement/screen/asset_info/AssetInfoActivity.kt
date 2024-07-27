@@ -38,17 +38,17 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
     }
 
     private fun callApi() {
-        val extras = intent.extras
-        val assetId = extras?.getInt(Constants.KEY_ASSET_ID, -1) ?: -1
-        presenter = AssetInfoPresenter(this)
-        presenter.fetchAssetDetail(assetId)
+
     }
 
     private fun addListener() {
         binding.abvAssetInfo.setActionBarViewListener(this)
         binding.btnAssetDetail.setOnClickListener {
+
+            val extras = intent.extras
+            val assetId = extras?.getInt(Constants.KEY_ASSET_ID, -1) ?: -1
             val intent = Intent(this, AssetDetailActivity::class.java)
-            intent.putExtra(Constants.KEY_ASSET_DETAIL, assetDetail)
+            intent.putExtra(Constants.KEY_ASSET_ID, assetId)
             startActivity(intent)
         }
         binding.btnAssetDepreciation.setOnClickListener {
@@ -59,15 +59,6 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
             val intent = Intent(this, AssetLocationActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    override fun fetchAssetDetailSuccess(data: Asset?) {
-        binding.loading.visibility = View.GONE
-        assetDetail = data
-    }
-
-    override fun fetchAssetDetailFailure() {
-        binding.loading.visibility = View.GONE
     }
 
     override fun onClickLeftButton() {

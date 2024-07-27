@@ -6,7 +6,7 @@
     android:background="@drawable/bg_box_detail">
 
     <TextView
-        android:id="@+id/tvTitleQrCode"
+        android:id="@+id/tvQrCodeCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
@@ -23,19 +23,19 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dimen_20dp"
         android:src="@drawable/ic_qr_code"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTitleQrCode"
+        app:layout_constraintBottom_toBottomOf="@+id/tvQrCodeCategory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvTitleQrCode" />
+        app:layout_constraintTop_toTopOf="@+id/tvQrCodeCategory" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/mdQrCode"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1dp"
         android:background="@color/color_bg_base"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleQrCode" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQrCodeCategory" />
 
     <TextView
-        android:id="@+id/tvQrCode"
+        android:id="@+id/tvTitleQrCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mdQrCode" />
 
     <TextView
+        android:id="@+id/tvQrCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_12dp"
@@ -53,11 +54,10 @@
         android:gravity="end"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="https:***"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/tvQrCode"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleQrCode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvQrCode"
-        app:layout_constraintTop_toTopOf="@+id/tvQrCode" />
+        app:layout_constraintStart_toEndOf="@+id/tvTitleQrCode"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleQrCode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
