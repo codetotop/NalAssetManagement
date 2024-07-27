@@ -2,10 +2,15 @@ package com.example.nalassetmanagement.screen.asset_info
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.view.custom.ActionBarView
 import com.example.nalassetmanagement.databinding.ActivityAssetInfoBinding
+import com.example.nalassetmanagement.model.server.Asset
+import com.example.nalassetmanagement.screen.asset_info.asset_depreciation.AssetDepreciationActivity
+import com.example.nalassetmanagement.screen.asset_info.asset_detail.AssetDetailActivity
+import com.example.nalassetmanagement.screen.asset_info.asset_location.AssetLocationActivity
 import com.example.nalassetmanagement.screen.inventory.InventoryActivity
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
 
@@ -15,26 +20,46 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
     private lateinit var presenter: AssetInfoContract.Presenter
     private lateinit var binding: ActivityAssetInfoBinding
 
+    private var assetDetail: Asset? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityAssetInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = AssetInfoPresenter(this)
+
         initView()
+        callApi()
         addListener()
     }
 
     private fun initView() {
-        binding.imgAssetPhoto.loadWithPicasso("")
+        val extras = intent.extras
+        val categoryId = extras?.getInt(Constants.KEY_CATEGORY_ID, -1) ?: -1
+        binding.imgAssetPhoto.loadWithPicasso("", categoryId)
+    }
+
+    private fun callApi() {
+
     }
 
     private fun addListener() {
         binding.abvAssetInfo.setActionBarViewListener(this)
-    }
+        binding.btnAssetDetail.setOnClickListener {
 
-    override fun loadData() {
-
+            val extras = intent.extras
+            val assetId = extras?.getInt(Constants.KEY_ASSET_ID, -1) ?: -1
+            val intent = Intent(this, AssetDetailActivity::class.java)
+            intent.putExtra(Constants.KEY_ASSET_ID, assetId)
+            startActivity(intent)
+        }
+        binding.btnAssetDepreciation.setOnClickListener {
+            val intent = Intent(this, AssetDepreciationActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnAssetLocation.setOnClickListener {
+            val intent = Intent(this, AssetLocationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onClickLeftButton() {
@@ -42,6 +67,6 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
     }
 
     override fun onClickRightButton() {
-        Toast.makeText(this, "Right click", Toast.LENGTH_LONG).show()
+
     }
 }

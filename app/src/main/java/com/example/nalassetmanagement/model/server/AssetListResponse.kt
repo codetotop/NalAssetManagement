@@ -1,13 +1,13 @@
-package com.example.nalassetmanagement.model
+package com.example.nalassetmanagement.model.server
 
 import com.example.nalassetmanagement.room.entity.AssetEntity
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import kotlin.collections.List
 
-class AssetListResponse : BaseResponse<ListAsset>()
+class AssetListResponse : BaseResponse<AssetList>()
 
-data class ListAsset(
+data class AssetList(
     @SerializedName("current_page")
     val currentPage: Int? = null,
     @SerializedName("data")
@@ -32,11 +32,11 @@ data class ListAsset(
     val to: Int? = null,
     @SerializedName("total")
     val total: Int? = null,
-)
+): Serializable
 
 data class Asset(
     @SerializedName("id")
-    val id: String? = null,
+    val id: Int? = null,
     @SerializedName("name")
     val name: String? = null,
     @SerializedName("qr_code")
@@ -70,8 +70,8 @@ data class Asset(
     @SerializedName("status")
     val status: KeyValue? = null,
     @SerializedName("user")
-    val user: KeyValue? = null,
-) {
+    val user: User? = null,
+): Serializable {
     fun toAssetEntity(): AssetEntity {
         return AssetEntity(
             name = name,
@@ -100,4 +100,11 @@ data class KeyValue(
     val id: Int? = null,
     @SerializedName("name")
     val name: String? = null
+): Serializable
+
+data class User(
+    @SerializedName("id")
+    val id: Int? = null,
+    @SerializedName("username")
+    val userName: String? = null
 ): Serializable

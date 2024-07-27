@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_box_detail">
+
+    <TextView
+        android:id="@+id/tvTitleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/product_description"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgUpdateStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:src="@drawable/ic_add_box_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitleDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleDescription" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdStatus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/color_bg_base"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDescription" />
+
+    <TextView
+        android:id="@+id/tvTitleProducer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/producer"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdStatus" />
+
+    <TextView
+        android:id="@+id/tvProducer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/apple"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleProducer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleProducer"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleProducer" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdProductDes"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/color_bg_base"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleProducer" />
+
+    <TextView
+        android:id="@+id/tvTitleModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/model"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdProductDes" />
+
+    <TextView
+        android:id="@+id/tvModel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/iphone11"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleModel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleModel"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleModel" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/mdSerialDes"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:layout_marginHorizontal="@dimen/dimen_12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleModel"/>
+
+    <TextView
+        android:id="@+id/tvTitleSerial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_12dp"
+        android:text="@string/serial"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mdSerialDes" />
+
+    <TextView
+        android:id="@+id/tvSerial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_12dp"
+        android:layout_marginEnd="@dimen/dimen_20dp"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="1900292929"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitleSerial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleSerial"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleSerial" />
+</androidx.constraintlayout.widget.ConstraintLayout>

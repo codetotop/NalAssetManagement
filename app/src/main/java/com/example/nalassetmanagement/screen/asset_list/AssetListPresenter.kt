@@ -1,7 +1,7 @@
 package com.example.nalassetmanagement.screen.asset_list
 
 import com.example.nalassetmanagement.api.ApiRepository
-import com.example.nalassetmanagement.model.AssetListResponse
+import com.example.nalassetmanagement.model.server.AssetListResponse
 import com.example.nalassetmanagement.model.LoginData
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,5 +44,9 @@ class AssetListPresenter(private val mainView: AssetListContract.View) : AssetLi
                 mainView.fetchAssetListFailure()
             }
         })
+    }
+
+    override fun searchQr(qrText: String) {
+
     }
 }

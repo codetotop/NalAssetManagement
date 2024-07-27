@@ -1,7 +1,6 @@
-package com.example.nalassetmanagement.model
+package com.example.nalassetmanagement.model.server
 
 import com.google.gson.annotations.SerializedName
-
 
 abstract class BaseResponse<T> {
     @SerializedName("data")
