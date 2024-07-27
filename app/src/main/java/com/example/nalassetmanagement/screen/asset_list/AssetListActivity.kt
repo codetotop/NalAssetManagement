@@ -5,12 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.widget.addTextChangedListener
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.view.custom.ActionBarView
@@ -42,8 +45,11 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
             if (isGranted) {
                 showCamera()
             } else {
-                Toast.makeText(this@AssetListActivity, "Hãy mở Camera để quét mã!", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(
+                    this@AssetListActivity,
+                    "Hãy mở Camera để quét mã!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
 
@@ -100,6 +106,21 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     private fun addListener() {
         binding.abvAssetList.setActionBarViewListener(this)
+
+        binding.edtSearch.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do Nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                assetListAdapter.filter(assetListResponses, s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Do Nothing
+            }
+
+        })
         binding.imgFilter.setOnClickListener {
             val intent = Intent(this, AssetFilterActivity::class.java)
             startActivity(intent)
@@ -152,7 +173,11 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
 
     override fun searchQrFailure() {
         binding.loading.visibility = View.GONE
-        Toast.makeText(this, "Mã qr không hợp lệ hoặc tài sản không có trong danh sách!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this,
+            "Mã qr không hợp lệ hoặc tài sản không có trong danh sách!",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onClickLeftButton() {
