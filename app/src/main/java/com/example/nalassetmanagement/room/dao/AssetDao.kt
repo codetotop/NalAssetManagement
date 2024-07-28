@@ -14,5 +14,5 @@ interface AssetDao {
     @Query("SELECT * FROM asset WHERE id = :id")
     fun get(id: Int): AssetEntity
     @Query("SELECT * FROM asset WHERE qrCode == :qrCode")
-    fun getItemByQrCode(qrCode: String): AssetEntity
+    fun getItemByQrCode(qrCode: String): AssetEntity?
 }

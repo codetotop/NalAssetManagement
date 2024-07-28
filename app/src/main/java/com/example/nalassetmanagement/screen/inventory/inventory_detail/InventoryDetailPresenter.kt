@@ -12,6 +12,7 @@ import com.example.nalassetmanagement.room.entity.AssetEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
@@ -67,8 +68,11 @@ class InventoryDetailPresenter(private val view: InventoryDetailContract.View) :
             val item = AppDatabase.getInstance((view as Activity).applicationContext)
                 .assetDao()
                 .getItemByQrCode(qrCode)
-                .toAsset()
-
+                ?.toAsset()
+            if (item == null) {
+                presenterScope.cancel()
+                return@launch
+            }
             val listAssetsChecked = filterAssetsChecked(mutableListOf(item), listAssetsInventorySession)
             val listAssetsNotChecked = filterAssetsNotChecked(mutableListOf(item), listAssetsInventorySession)
             withContext(Dispatchers.Main) {

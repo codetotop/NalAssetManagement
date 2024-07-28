@@ -26,10 +26,10 @@ class AssetLocationActivity : AppCompatActivity(), AssetLocationContract.View,
     private fun initView() {
 
         locationAdapter = AssetLocationAdapter(listOf(
-            AssetLocation("20/06/2020", "Zayn Jonas", "Kosmo - Tây Hồ"),
-            AssetLocation("16/09/2021", "Ken Amad", "Niang Pay - Indian"),
-            AssetLocation("24/10/2022", "Rashy", "Manchester - England"),
-            AssetLocation("11/06/2023", "Joe Gomez", "Liverpool - England"),
+            AssetLocation("20/06/2020 14h30", "cuongnm1", "Kosmo - Tây Hồ"),
+            AssetLocation("16/09/2021 10h30", "dungnb", "Nal building"),
+            AssetLocation("24/10/2022 16h30", "vietbq", "Nal building"),
+            AssetLocation("11/06/2023 8h30", "thaott", "Kosmo - Tây Hồ"),
         ))
 
         binding.rcvLocationList.adapter = locationAdapter
