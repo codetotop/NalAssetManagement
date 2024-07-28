@@ -2,11 +2,10 @@ package com.example.nalassetmanagement.screen.asset_list
 
 import android.content.Context
 import com.example.nalassetmanagement.api.ApiRepository
-import com.example.nalassetmanagement.model.server.AssetListResponse
 import com.example.nalassetmanagement.model.LoginData
 import com.example.nalassetmanagement.model.server.Asset
-import com.example.nalassetmanagement.room.database.importDataFakeToDatabase
-import com.example.nalassetmanagement.room.database.importDataToDatabase
+import com.example.nalassetmanagement.model.server.AssetListResponse
+import com.example.nalassetmanagement.room.database.importAssetToDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -56,7 +55,7 @@ class AssetListPresenter(private val view: AssetListContract.View) : AssetListCo
     private fun importData(listAssetEntity: List<Asset>?) {
         try {
             if (listAssetEntity != null) {
-                importDataToDatabase(
+                importAssetToDatabase(
                     context = (view as Context).applicationContext,
                     listAssetEntity.map { it.toAssetEntity() }
                 )

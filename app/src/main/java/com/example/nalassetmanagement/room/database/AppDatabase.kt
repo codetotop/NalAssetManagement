@@ -46,16 +46,9 @@ abstract class AppDatabase : RoomDatabase() {
 fun importDataFakeToDatabase(context: Context) {
     val database = AppDatabase.getInstance(context)
     CoroutineScope(Dispatchers.IO).launch {
-        val assetCount = database.assetDao().getAll().size
+        val inventorySessionCount = database.inventorySessionDao().getAll().size
 
-        if (assetCount == 0 ) {
-            database.assetDao().insert(
-                *getAssetFakeData()
-                    .mapEntityToData {
-                        it.toAssetEntity()
-                    }
-                    .toTypedArray()
-            )
+        if (inventorySessionCount == 0 ) {
             database.inventorySessionDao().insert(
                 *getListInventorySessionFakeData()
                     .mapEntityToData { it.toInventorySessionEntity() }
@@ -65,23 +58,11 @@ fun importDataFakeToDatabase(context: Context) {
     }
 }
 
-fun importDataToDatabase(
-    context: Context,
-    listAsset: List<AssetEntity>,
-) {
+fun importAssetToDatabase(context: Context, listAsset: List<AssetEntity>) {
     val database = AppDatabase.getInstance(context)
     CoroutineScope(Dispatchers.IO).launch {
-        val assetCount = database.assetDao().getAll().size
-
-        if (assetCount == 0) {
             database.assetDao().insert(
                 *listAsset.toTypedArray()
             )
-            database.inventorySessionDao().insert(
-                *getListInventorySessionFakeData()
-                    .mapEntityToData { it.toInventorySessionEntity() }
-                    .toTypedArray()
-            )
-        }
     }
 }
