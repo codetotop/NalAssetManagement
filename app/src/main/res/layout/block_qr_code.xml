@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
         android:text="@string/code"
-        android:textColor="@color/black"
+        android:textColor="@color/base_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +41,7 @@
         android:padding="@dimen/dimen_12dp"
         android:text="@string/qrcode"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdQrCode" />

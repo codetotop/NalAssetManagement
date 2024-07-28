@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
         android:text="@string/history"
-        android:textColor="@color/black"
+        android:textColor="@color/base_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +43,7 @@
         android:text="@string/ngay_trong_kho"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdHistory" />
 
@@ -80,6 +81,7 @@
         android:text="@string/mang_di_sua"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdHistory1" />
 
