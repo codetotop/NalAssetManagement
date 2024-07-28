@@ -12,7 +12,7 @@ class ActionBarView : LinearLayout {
     private var binding: ActionBarBinding =
         ActionBarBinding.inflate(LayoutInflater.from(context), this, false)
 
-    private lateinit var listener: ActionBarViewListener
+    private var listener: ActionBarViewListener? = null
 
     fun setActionBarViewListener(listener: ActionBarViewListener) {
         this.listener = listener
@@ -62,11 +62,11 @@ class ActionBarView : LinearLayout {
             binding.imgRight.setImageDrawable(imgRightRes)
 
             binding.imgLeft.setOnClickListener {
-                listener.onClickLeftButton()
+                listener?.onClickLeftButton()
             }
 
             binding.imgRight.setOnClickListener {
-                listener.onClickRightButton()
+                listener?.onClickRightButton()
             }
 
             array.recycle()
