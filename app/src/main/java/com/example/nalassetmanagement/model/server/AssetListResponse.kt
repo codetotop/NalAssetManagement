@@ -74,6 +74,7 @@ data class Asset(
 ): Serializable , Cloneable{
     fun toAssetEntity(): AssetEntity {
         return AssetEntity(
+            id = id,
             name = name,
             qrCode = qrCode,
             addressId = addressId,

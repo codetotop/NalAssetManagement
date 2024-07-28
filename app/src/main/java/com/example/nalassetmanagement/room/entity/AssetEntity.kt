@@ -8,7 +8,7 @@ import com.example.nalassetmanagement.model.server.User
 
 @Entity(tableName = "asset")
 data class AssetEntity(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     val id: Int? = null,
 
     val name: String? = null,
