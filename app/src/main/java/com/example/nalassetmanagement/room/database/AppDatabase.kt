@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [AssetEntity::class, InventorySessionEntity::class, AssetInventorySessionEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 
@@ -55,6 +55,27 @@ fun importDataFakeToDatabase(context: Context) {
                         it.toAssetEntity()
                     }
                     .toTypedArray()
+            )
+            database.inventorySessionDao().insert(
+                *getListInventorySessionFakeData()
+                    .mapEntityToData { it.toInventorySessionEntity() }
+                    .toTypedArray()
+            )
+        }
+    }
+}
+
+fun importDataToDatabase(
+    context: Context,
+    listAsset: List<AssetEntity>,
+) {
+    val database = AppDatabase.getInstance(context)
+    CoroutineScope(Dispatchers.IO).launch {
+        val assetCount = database.assetDao().getAll().size
+
+        if (assetCount == 0) {
+            database.assetDao().insert(
+                *listAsset.toTypedArray()
             )
             database.inventorySessionDao().insert(
                 *getListInventorySessionFakeData()

@@ -1,9 +1,12 @@
 package com.example.nalassetmanagement.screen.asset_list
 
+import android.content.Context
 import com.example.nalassetmanagement.api.ApiRepository
 import com.example.nalassetmanagement.model.server.AssetListResponse
 import com.example.nalassetmanagement.model.LoginData
 import com.example.nalassetmanagement.model.server.Asset
+import com.example.nalassetmanagement.room.database.importDataFakeToDatabase
+import com.example.nalassetmanagement.room.database.importDataToDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,10 +34,14 @@ class AssetListPresenter(private val view: AssetListContract.View) : AssetListCo
 
     override fun fetchAssetList(page: Int) {
         apiRepository.fetchAssetList(page)?.enqueue(object : Callback<AssetListResponse> {
-            override fun onResponse(call: Call<AssetListResponse>, response: Response<AssetListResponse>) {
+            override fun onResponse(
+                call: Call<AssetListResponse>,
+                response: Response<AssetListResponse>
+            ) {
                 response.body()?.let { body ->
                     if (response.isSuccessful) {
                         view.fetchAssetListSuccess(body.data)
+                        importData(body.data?.data)
                     } else {
                         view.fetchAssetListFailure()
                     }
@@ -45,6 +52,17 @@ class AssetListPresenter(private val view: AssetListContract.View) : AssetListCo
                 view.fetchAssetListFailure()
             }
         })
+    }
+    private fun importData(listAssetEntity: List<Asset>?) {
+        try {
+            if (listAssetEntity != null) {
+                importDataToDatabase(
+                    context = (view as Context).applicationContext,
+                    listAssetEntity.map { it.toAssetEntity() }
+                )
+            }
+        }
+        catch (_ : Exception) {}
     }
 
     override fun searchQr(qrText: String, assetListResponses: List<Asset>) {

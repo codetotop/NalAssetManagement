@@ -63,7 +63,7 @@ fun getListInventorySessionFakeData() = mutableListOf(
 fun getAssetFakeData() = mutableListOf(
     Asset(
         id = 1,
-        name = "Laptop",
+        name = "MAC_AIRM2.29",
         qrCode = "QR001",
         addressId = 101,
         statusId = 1,
@@ -86,7 +86,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 2,
-        name = "Điện thoại",
+        name = "IP02-Iphone 11 Pro",
         qrCode = "QR002",
         addressId = 102,
         statusId = 2,
@@ -109,7 +109,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 3,
-        name = "Màn hình",
+        name = "MH01 Dell",
         qrCode = "QR003",
         addressId = 103,
         statusId = 3,
@@ -132,7 +132,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 4,
-        name = "Bàn phím",
+        name = "BP01 Dell",
         qrCode = "QR004",
         addressId = 104,
         statusId = 1,
@@ -155,7 +155,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 30,
-        name = "Chuột",
+        name = "C02 Dell",
         qrCode = "QR005",
         addressId = 105,
         statusId = 2,
@@ -178,7 +178,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 5,
-        name = "Laptop",
+        name = "MAC_AIRM2.30",
         qrCode = "QR006",
         addressId = 106,
         statusId = 1,
@@ -198,7 +198,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 6,
-        name = "Điện thoại",
+        name = "IP05-Iphone 12",
         qrCode = "QR007",
         addressId = 107,
         statusId = 3,
@@ -218,7 +218,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 7,
-        name = "Màn hình",
+        name = "MH03 Dell",
         qrCode = "QR008",
         addressId = 108,
         statusId = 2,
@@ -238,7 +238,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 8,
-        name = "Laptop",
+        name = "LP03 Dell",
         qrCode = "QR006",
         addressId = 106,
         statusId = 1,
@@ -258,7 +258,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 9,
-        name = "Chuột",
+        name = "C05 DELL",
         qrCode = "QR010",
         addressId = 110,
         statusId = 1,
@@ -278,7 +278,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 10,
-        name = "Máy tính",
+        name = "MAC_AIRM2.31",
         qrCode = "QR011",
         addressId = 111,
         statusId = 2,
@@ -298,7 +298,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 11,
-        name = "Điện thoại",
+        name = "IP03-Iphone 8",
         qrCode = "QR012",
         addressId = 112,
         statusId = 3,
@@ -318,7 +318,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 12,
-        name = "Màn hình",
+        name = "MH05 Dell",
         qrCode = "QR013",
         addressId = 113,
         statusId = 1,
@@ -338,7 +338,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 13,
-        name = "Bàn phím",
+        name = "BP09 Dell",
         qrCode = "QR014",
         addressId = 114,
         statusId = 2,
@@ -358,7 +358,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 14,
-        name = "Chuột",
+        name = "C11 Dell",
         qrCode = "QR015",
         addressId = 115,
         statusId = 3,
@@ -378,7 +378,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 15,
-        name = "Laptop",
+        name = "MAC_PROM1.35",
         qrCode = "QR016",
         addressId = 116,
         statusId = 1,
@@ -398,7 +398,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 16,
-        name = "Điện thoại",
+        name = "IP06-Iphone X ",
         qrCode = "QR017",
         addressId = 117,
         statusId = 2,
@@ -418,7 +418,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 17,
-        name = "Màn hình",
+        name = "MH20 DELL",
         qrCode = "QR018",
         addressId = 118,
         statusId = 3,
@@ -438,7 +438,7 @@ fun getAssetFakeData() = mutableListOf(
     ),
     Asset(
         id = 18,
-        name = "bàn phím",
+        name = "BP15 Dell",
         qrCode = "QR019",
         addressId = 119,
         statusId = 1,
@@ -456,26 +456,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 1, name = "Tệ"),
         user = User(id = 19, userName = "nguyetdta")
     ),
-    Asset(
-        id = 19,
-        name = "chuột",
-        qrCode = "QR020",
-        addressId = 120,
-        statusId = 2,
-        categoryId = 5,
-        producerId = 20,
-        modelId = 20,
-        createdAt = "2024-01-20T05:00:00Z",
-        updatedAt = "2024-01-21T05:00:00Z",
-        deletedAt = null,
-        userId = 20,
-        category = KeyValue(id = 5, name = "Chuột"),
-        address = KeyValue(id = 120, name = "Phòng 120"),
-        models = KeyValue(id = 220, name = "Model Q"),
-        producer = KeyValue(id = 320, name = "Apple"),
-        status = KeyValue(id = 2, name = "Tốt"),
-        user = User(id = 20, userName = "nguyetdta")
-    )
+
 )
 
 

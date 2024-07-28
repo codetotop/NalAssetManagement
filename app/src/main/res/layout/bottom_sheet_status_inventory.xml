@@ -91,19 +91,19 @@
 
             <RadioButton
                 android:id="@+id/good"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_type_good" />
 
             <RadioButton
                 android:id="@+id/normal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_type_nomal" />
 
             <RadioButton
                 android:id="@+id/low"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_type_least" />
 

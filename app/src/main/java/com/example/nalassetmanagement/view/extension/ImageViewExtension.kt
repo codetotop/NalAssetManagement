@@ -13,6 +13,10 @@ fun ImageView.loadWithPicasso(uri: String?, categoryId: Int?) {
         2 -> {
             R.drawable.ic_phone
         }
+        3 -> {
+            R.drawable.ic_screen
+        }
+        4 -> R.drawable.ic_keybroad
 
         else -> {
             R.drawable.ic_computer
