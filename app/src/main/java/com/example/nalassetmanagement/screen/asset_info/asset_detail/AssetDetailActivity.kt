@@ -100,7 +100,7 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
             binding.blockStatus.tvStatus.text = it.status?.name ?: "Tốt"
             binding.blockCategory.tvCategoryName.text = it.category?.name ?: "Máy tính"
             binding.blockProductDes.tvProducer.text = it.producer?.name ?: "Apple Inc"
-            binding.blockProductDes.tvModel.text = it.models?.name ?: "Mackbook Pro 038"
+            binding.blockProductDes.tvModel.text = it.name ?: "Mackbook Pro 038"
             binding.blockProductOwner.tvProductOwner1.text =
                 it.address?.name ?: "Nal building"
         }

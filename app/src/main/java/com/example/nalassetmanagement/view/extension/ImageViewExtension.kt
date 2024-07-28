@@ -7,11 +7,11 @@ import com.squareup.picasso.Picasso
 fun ImageView.loadWithPicasso(uri: String?, categoryId: Int?) {
     val holder = when (categoryId) {
         1 -> {
-            R.drawable.ic_computer
+            R.drawable.laptop
         }
 
         2 -> {
-            R.drawable.ic_phone
+            R.drawable.phone
         }
         3 -> {
             R.drawable.ic_screen
@@ -19,7 +19,7 @@ fun ImageView.loadWithPicasso(uri: String?, categoryId: Int?) {
         4 -> R.drawable.ic_keybroad
 
         else -> {
-            R.drawable.ic_computer
+            R.drawable.monitor
         }
     }
     if (uri.isNullOrEmpty()) {

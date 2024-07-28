@@ -181,6 +181,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         })
         binding.imgFilter.setOnClickListener {
             val intent = Intent(this, AssetFilterActivity::class.java)
+
             filterLauncher.launch(intent)
         }
 
