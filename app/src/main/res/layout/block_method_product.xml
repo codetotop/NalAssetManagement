@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/dimen_12dp"
         android:text="@string/method"
-        android:textColor="@color/black"
+        android:textColor="@color/base_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,6 @@
         android:layout_marginEnd="@dimen/dimen_20dp"
         android:text="@string/duong_thang"
         android:textColor="@color/base_color"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvTitleMethod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTitleMethod" />
@@ -44,6 +43,7 @@
         android:text="@string/depreciation_start_day"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdMethod" />
 
@@ -81,6 +81,7 @@
         android:text="@string/fee_depreciation"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdProductDes" />
 
@@ -117,6 +118,7 @@
         android:text="@string/depreciation_month"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdFeeDepreciation" />
 
@@ -153,6 +155,7 @@
         android:text="@string/liquidation_pride"
         android:textColor="@color/black"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mdLiquidationPride" />
 
