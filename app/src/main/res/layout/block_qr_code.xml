@@ -55,7 +55,6 @@
         android:gravity="end"
         android:ellipsize="end"
         android:maxLines="1"
-        android:inputType="textPassword"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@id/tvTitleQrCode"
         app:layout_constraintEnd_toEndOf="parent"
