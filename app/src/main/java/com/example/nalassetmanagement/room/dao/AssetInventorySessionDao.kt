@@ -11,4 +11,8 @@ interface AssetInventorySessionDao {
     fun insert(vararg item: AssetInventorySessionEntity)
     @Query("SELECT * FROM asset_inventory_session WHERE idAsset = :idAsset AND idInventorySession = :idInventorySession")
     fun get(idAsset: Int, idInventorySession: Int): List<AssetInventorySessionEntity?>
+    @Query("SELECT * FROM asset_inventory_session WHERE idInventorySession = :idInventorySession")
+    fun getByIdInventorySession(idInventorySession: Int) : List<AssetInventorySessionEntity>
+
+
 }

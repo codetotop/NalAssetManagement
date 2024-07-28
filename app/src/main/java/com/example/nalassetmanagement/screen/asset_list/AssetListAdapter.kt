@@ -89,7 +89,6 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
                 temp.add(item)
             }
         }
-
         replaceList(temp)
     }
 

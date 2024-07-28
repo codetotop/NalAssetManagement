@@ -47,6 +47,7 @@ data class AssetEntity(
 ) {
     fun toAsset(): Asset {
         return Asset(
+            id = id,
             name = name,
             qrCode = qrCode,
             addressId = addressId,
@@ -62,16 +63,16 @@ data class AssetEntity(
             address = KeyValue(name = address),
             models = KeyValue(name = models),
             producer = KeyValue(name = producer),
-            status = KeyValue(name = status,id = getIdStatus(status)),
+            status = KeyValue(name = getStatus(statusId), id = statusId),
             user = User(userName = user),
         )
     }
-    private  fun getIdStatus(status: String?) :Int {
+    private  fun getStatus(status: Int?) :String {
         return when(true) {
-            ("Tệ" == status) -> 3
-            ("Bình thường" == status) -> 2
-            ("Tốt" == status) -> 1
-            else -> 4
+            (status == 1 ) -> "Tốt"
+            (status == 2) -> "Bình thường"
+            (status == 3) -> "Tệ"
+            else -> "Bình thường"
         }
     }
 }

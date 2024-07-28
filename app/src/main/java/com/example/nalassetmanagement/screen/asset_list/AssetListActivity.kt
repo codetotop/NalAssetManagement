@@ -86,6 +86,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         }
     }
 
+
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {

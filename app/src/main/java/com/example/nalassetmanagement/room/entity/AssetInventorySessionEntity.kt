@@ -3,7 +3,7 @@ package com.example.nalassetmanagement.room.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.nalassetmanagement.model.inventory.StatusAsset
+import com.example.nalassetmanagement.model.inventory.AssetInventorySession
 
 
 @Entity(
@@ -19,13 +19,15 @@ data class AssetInventorySessionEntity (
     val idAsset: Int,
     val idInventorySession: Int,
     val status : String? = null,
+    val statusId : Int?,
     val note : String? = null,
 ) {
-    fun toStatusAsset() : StatusAsset {
-        return StatusAsset(
+    fun toAssetInventorySession() : AssetInventorySession {
+        return AssetInventorySession(
             idInventorySession = idInventorySession,
             idAsset = idAsset,
             status = status,
+            statusId = statusId,
             note = note
         )
     }
@@ -33,6 +35,5 @@ data class AssetInventorySessionEntity (
 enum class StatusAssetInventorySession(value : String) {
     GOOD("Tốt"),
     NORMAL("Bình thường"),
-    BAD("Kém"),
-    LIQUIDATE("Xin thanh lý")
+    BAD("Tệ"),
 }

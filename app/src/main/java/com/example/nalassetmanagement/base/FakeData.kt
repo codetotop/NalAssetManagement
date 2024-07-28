@@ -29,7 +29,7 @@ fun getListInventorySessionFakeData() = mutableListOf(
         status = InventorySessionStatus.END.value
     ),
     InventorySession(
-        locationInventory = "Nal Thiên Hiền",
+        locationInventory = "Nal Kosmo",
         startDate = "02/06/2024",
         endDate = "04/06/2024",
         user = User(
@@ -81,7 +81,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 1, name = "Tệ"),
         user = User(
             id = 1,
-            userName = "người dùng 1",
+            userName = "vietbq",
         ),
     ),
     Asset(
@@ -104,7 +104,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 2, name = "Tốt"),
         user = User(
             id = 1,
-            userName = "người dùng 1",
+            userName = "vietvv",
         ),
     ),
     Asset(
@@ -127,7 +127,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 3, name = "Tốt"),
         user = User(
             id = 3,
-            userName = "người dùng 3",
+            userName = "vietbq",
         ),
     ),
     Asset(
@@ -150,7 +150,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 1, name = "Tốt"),
         user = User(
             id = 4,
-            userName = "người dùng 4",
+            userName = "dungnb",
         ),
     ),
     Asset(
@@ -173,7 +173,7 @@ fun getAssetFakeData() = mutableListOf(
         status = KeyValue(id = 2, name = "Tốt"),
         user = User(
             id = 5,
-            userName = "người dùng 5",
+            userName = "huyentt3",
         ),
     ),
     Asset(
@@ -194,7 +194,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 206, name = "Model C"),
         producer = KeyValue(id = 306, name = "Apple"),
         status = KeyValue(id = 1, name = "Tệ"),
-        user = User(id = 6, userName = "Người dùng 6")
+        user = User(id = 6, userName = "dungnb")
     ),
     Asset(
         id = 6,
@@ -214,7 +214,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 207, name = "Model D"),
         producer = KeyValue(id = 307, name = "Apple"),
         status = KeyValue(id = 3, name = "Tệ"),
-        user = User(id = 7, userName = "Người dùng 7")
+        user = User(id = 7, userName = "thaott")
     ),
     Asset(
         id = 7,
@@ -234,7 +234,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 208, name = "Model E"),
         producer = KeyValue(id = 308, name = "Dell"),
         status = KeyValue(id = 2, name = "Tốt"),
-        user = User(id = 8, userName = "Người dùng 8")
+        user = User(id = 8, userName = "Chienlv")
     ),
     Asset(
         id = 8,
@@ -254,7 +254,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 206, name = "Model C"),
         producer = KeyValue(id = 306, name = "Apple"),
         status = KeyValue(id = 1, name = "Tệ"),
-        user = User(id = 6, userName = "Người dùng 6")
+        user = User(id = 6, userName = "Cuongnm1")
     ),
     Asset(
         id = 9,
@@ -274,7 +274,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 210, name = "Model G"),
         producer = KeyValue(id = 310, name = "Dell"),
         status = KeyValue(id = 1, name = "Tốt"),
-        user = User(id = 10, userName = "Người dùng 10")
+        user = User(id = 10, userName = "Vietvv")
     ),
     Asset(
         id = 10,
@@ -294,7 +294,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 211, name = "Model H"),
         producer = KeyValue(id = 311, name = "Apple"),
         status = KeyValue(id = 2, name = "Tốt"),
-        user = User(id = 11, userName = "Người dùng 11")
+        user = User(id = 11, userName = "Minhnn1")
     ),
     Asset(
         id = 11,
@@ -314,7 +314,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 212, name = "Model I"),
         producer = KeyValue(id = 312, name = "Apple"),
         status = KeyValue(id = 3, name = "Bình thường"),
-        user = User(id = 12, userName = "Người dùng 12")
+        user = User(id = 12, userName = "Minhnv1")
     ),
     Asset(
         id = 12,
@@ -334,7 +334,7 @@ fun getAssetFakeData() = mutableListOf(
         models = KeyValue(id = 213, name = "Model J"),
         producer = KeyValue(id = 313, name = "Dell"),
         status = KeyValue(id = 1, name = "Tốt"),
-        user = User(id = 13, userName = "Người dùng 13")
+        user = User(id = 13, userName = "dungnb")
     ),
     Asset(
         id = 13,

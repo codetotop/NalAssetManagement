@@ -11,6 +11,8 @@ interface InventorySessionDao {
     @Query("SELECT * FROM inventory_session")
     fun getAll(): List<InventorySessionEntity>
     @Query("SELECT * FROM inventory_session WHERE id = :id")
+    fun get(id: Int): List<InventorySessionEntity>
+    @Query("SELECT * FROM inventory_session WHERE id = :id")
     fun getInventorySessionById(id: Int): InventorySessionEntity?
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg inventorySession: InventorySessionEntity)
