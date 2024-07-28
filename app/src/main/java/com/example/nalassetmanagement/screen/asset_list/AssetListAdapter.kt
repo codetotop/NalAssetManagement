@@ -18,7 +18,6 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
     class AssetListViewHolder(val binding: ItemAssetBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetListViewHolder {
         val binding = ItemAssetBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -39,7 +38,7 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
     override fun onBindViewHolder(holder: AssetListViewHolder, itemPosition: Int) {
         with(holder) {
             with(list[itemPosition]) {
-                binding.imgAssetAvatar.loadWithPicasso("", categoryId)
+                binding.imgAssetAvatar.loadWithPicasso("", modelId, )
                 binding.tvAssetName.text = name
                 binding.tvUser.text = user?.userName ?: ""
                 binding.tvAddress.text = address?.name ?: "Kosmo"
@@ -69,12 +68,15 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
                 return R.drawable.bg_tv_status_red
             }
 
-            4, 5 -> {
-                return R.drawable.bg_tv_status_green_dark
+            4 -> {
+                return R.drawable.bg_tv_status_gray
             }
 
+            5 -> {
+                return R.drawable.bg_tv_status_green_dark
+            }
             else -> {
-                return R.drawable.bg_tv_status_gray
+                return R.drawable.bg_tv_status_green_dark
             }
         }
     }

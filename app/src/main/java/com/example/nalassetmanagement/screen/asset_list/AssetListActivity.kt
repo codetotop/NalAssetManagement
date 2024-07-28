@@ -1,7 +1,6 @@
 package com.example.nalassetmanagement.screen.asset_list
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,26 +11,23 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.recyclerview.widget.RecyclerView
 import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.common.Constants
-import com.example.nalassetmanagement.common.selectedPosition
-import com.example.nalassetmanagement.common.singleSelected
 import com.example.nalassetmanagement.databinding.ActivityAssetListBinding
 import com.example.nalassetmanagement.model.Data
 import com.example.nalassetmanagement.model.local.ObjectFilter
 import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.model.server.AssetList
 import com.example.nalassetmanagement.screen.asset_filter.AssetFilterActivity
-import com.example.nalassetmanagement.screen.asset_filter.bottom_sheet_adapter.ObjectFilterAdapter
 import com.example.nalassetmanagement.screen.asset_info.AssetInfoActivity
 import com.example.nalassetmanagement.screen.inventory.InventoryActivity
 import com.example.nalassetmanagement.view.custom.ActionBarView
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
@@ -86,12 +82,17 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
                     it.getSerializable(Constants.KEY_FILTER_PRODUCER) as ObjectFilter?
                 }
 
-                assetListAdapter.filterList(assetListResponses, user = userFilter, category = categoryFilter, address = addressFilter, producer = producerFilter)
+                assetListAdapter.filterList(
+                    assetListResponses,
+                    user = userFilter,
+                    category = categoryFilter,
+                    address = addressFilter,
+                    producer = producerFilter
+                )
 
             }
         }
     }
-
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -122,7 +123,7 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
         options.setDesiredBarcodeFormats(ScanOptions.QR_CODE)
         options.setPrompt("Scan QR code")
         options.setCameraId(0) // Use a specific camera of the device
-        options.setBeepEnabled(false)
+        options.setBeepEnabled(true)
         options.setBarcodeImageEnabled(true)
         options.setOrientationLocked(false)
         qrCodeLauncher.launch(options)
@@ -253,9 +254,17 @@ class AssetListActivity : AppCompatActivity(), AssetListContract.View,
     override fun onItemClick(position: Int) {
         val intent = Intent(this, AssetInfoActivity::class.java)
         intent.putExtra(Constants.KEY_ASSET_ID, assetListResponses[position].id)
-        intent.putExtra(Constants.KEY_CATEGORY_ID, assetListResponses[position].categoryId)
-        startActivity(intent)
+        intent.putExtra(Constants.KEY_MODEL_ID, assetListResponses[position].modelId)
+
+        activityResultLauncher.launch(intent)
     }
+
+    private var activityResultLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            callApi()
+        }
 
     override fun onAssetListChange(list: List<Asset>) {
         if (list.isEmpty()) {

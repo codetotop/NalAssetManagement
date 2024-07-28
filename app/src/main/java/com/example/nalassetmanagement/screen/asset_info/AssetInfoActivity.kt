@@ -2,7 +2,6 @@ package com.example.nalassetmanagement.screen.asset_info
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nalassetmanagement.common.Constants
 import com.example.nalassetmanagement.view.custom.ActionBarView
@@ -11,7 +10,6 @@ import com.example.nalassetmanagement.model.server.Asset
 import com.example.nalassetmanagement.screen.asset_info.asset_depreciation.AssetDepreciationActivity
 import com.example.nalassetmanagement.screen.asset_info.asset_detail.AssetDetailActivity
 import com.example.nalassetmanagement.screen.asset_info.asset_location.AssetLocationActivity
-import com.example.nalassetmanagement.screen.inventory.InventoryActivity
 import com.example.nalassetmanagement.view.extension.loadWithPicasso
 
 class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
@@ -34,8 +32,8 @@ class AssetInfoActivity : AppCompatActivity(), AssetInfoContract.View,
 
     private fun initView() {
         val extras = intent.extras
-        val categoryId = extras?.getInt(Constants.KEY_CATEGORY_ID, -1) ?: -1
-        binding.imgAssetPhoto.loadWithPicasso("", categoryId)
+        val modelId = extras?.getInt(Constants.KEY_MODEL_ID, -1) ?: -1
+        binding.imgAssetPhoto.loadWithPicasso("", modelId)
     }
 
     private fun callApi() {

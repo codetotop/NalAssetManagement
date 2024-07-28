@@ -3,7 +3,7 @@ package com.example.nalassetmanagement.common
 class Constants {
     companion object {
         val KEY_ASSET_ID = "key_id"
-        val KEY_CATEGORY_ID = "key_category_id"
+        val KEY_MODEL_ID = "key_category_id"
 
 
         val KEY_FILTER_USER = "key_filter_user"

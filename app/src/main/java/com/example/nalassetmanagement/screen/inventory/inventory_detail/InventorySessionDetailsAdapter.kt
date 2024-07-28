@@ -39,7 +39,7 @@ class InventorySessionDetailsAdapter(val onClickItemAsset : OnClickItemAsset) :
                 binding.tvStatus.let {
                     binding.tvStatus.setBackgroundResource(backgroundStatus(status = item.status))
                 }
-                binding.imgAssetAvatar.loadWithPicasso("", item.categoryId)
+                binding.imgAssetAvatar.loadWithPicasso("", item.modelId)
 
                 if (item.status == null) {
                     binding.tvStatus.visibility = View.GONE
