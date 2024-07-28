@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [AssetEntity::class, InventorySessionEntity::class, AssetInventorySessionEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 
