@@ -48,6 +48,8 @@ class ViewPdfActivity : AppCompatActivity(), ViewPdf.View,
         else {
             binding.toolbar.setTitle("Khấu hao tài sản")
         }
+
+        binding.toolbar.setActionBarViewListener(this)
     }
 
     @Throws(IOException::class)
