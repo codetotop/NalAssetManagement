@@ -2,6 +2,8 @@ package com.example.nalassetmanagement.screen.inventory
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nalassetmanagement.databinding.ActivityInventoryBinding
 
@@ -56,10 +58,28 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View,
         binding.toolbar.setActionBarViewListener(this)
         binding.recyclerViewInventory.adapter = adapterRcvInventoryInProgress
         binding.recyclerViewInventoryEnd.adapter = adapterRcvInventoryEnd
+
+        handlerSearch()
     }
 
     override fun loadData() {
 
+    }
+
+    private fun handlerSearch() {
+        binding.searchView.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
 
     override fun getInventorySessionsSuccess(listInventorySessionsEnd: List<InventorySession>, listInventorySessionsInProgress : List<InventorySession>) {

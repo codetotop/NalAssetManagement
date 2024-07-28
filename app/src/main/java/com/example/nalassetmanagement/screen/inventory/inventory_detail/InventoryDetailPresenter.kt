@@ -6,7 +6,9 @@ import com.example.nalassetmanagement.extension.mapEntityToData
 import com.example.nalassetmanagement.model.inventory.AssetInventorySession
 import com.example.nalassetmanagement.model.inventory.InventorySession
 import com.example.nalassetmanagement.model.server.Asset
+import com.example.nalassetmanagement.model.server.KeyValue
 import com.example.nalassetmanagement.room.database.AppDatabase
+import com.example.nalassetmanagement.room.entity.AssetEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -137,7 +139,9 @@ class InventoryDetailPresenter(private val view: InventoryDetailContract.View) :
         listAssetsInventorySession: MutableList<AssetInventorySession>
     ): MutableList<Asset> {
         val listIDChecked = listAssetsInventorySession.map { it.idAsset }.toSet()
-        return listAssets.filter { asset -> asset.id in listIDChecked }
+
+        val listAssetsAlreadyFillStatus = fillStatusToAssetInventorySession(listAssets, listAssetsInventorySession)
+        return listAssetsAlreadyFillStatus.filter { asset -> asset.id in listIDChecked }
             .toMutableList()
     }
 
@@ -149,5 +153,18 @@ class InventoryDetailPresenter(private val view: InventoryDetailContract.View) :
 
         return listAssets.filter { asset -> asset.id !in listIDChecked }
             .toMutableList()
+    }
+    private fun fillStatusToAssetInventorySession(listAssets: MutableList<Asset>, listAssetsInventorySession: MutableList<AssetInventorySession>) : MutableList<Asset>{
+        val updatedList = listAssets.map { asset ->
+            var assetAlreadyFill = Asset()
+            for (item in listAssetsInventorySession) {
+                if (asset.id == item.idAsset) {
+                    assetAlreadyFill = asset.copy(status = KeyValue(id = item.statusId, name = AssetEntity.getStatus(item.statusId)))
+                    break
+                }
+            }
+            assetAlreadyFill
+        }.toMutableList()
+        return updatedList
     }
 }

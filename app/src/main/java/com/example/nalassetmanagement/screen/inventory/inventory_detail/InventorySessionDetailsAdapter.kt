@@ -3,6 +3,7 @@ package com.example.nalassetmanagement.screen.inventory.inventory_detail
 import androidx.recyclerview.widget.RecyclerView
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -39,6 +40,13 @@ class InventorySessionDetailsAdapter(val onClickItemAsset : OnClickItemAsset) :
                     binding.tvStatus.setBackgroundResource(backgroundStatus(status = item.status))
                 }
                 binding.imgAssetAvatar.loadWithPicasso("", 1)
+
+                if (item.status == null) {
+                    binding.tvStatus.visibility = View.GONE
+                }
+                else {
+                    binding.tvStatus.visibility = View.VISIBLE
+                }
             }
         }
     }

@@ -71,13 +71,12 @@ data class Asset(
     val status: KeyValue? = null,
     @SerializedName("user")
     val user: User? = null,
-): Serializable {
+): Serializable , Cloneable{
     fun toAssetEntity(): AssetEntity {
         return AssetEntity(
             name = name,
             qrCode = qrCode,
             addressId = addressId,
-            statusId = statusId,
             categoryId = categoryId,
             producerId = producerId,
             modelId = modelId,
@@ -89,7 +88,6 @@ data class Asset(
             address = address?.name,
             models = models?.name,
             producer = producer?.name,
-            status = status?.name,
             user = user?.userName
         )
     }

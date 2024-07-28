@@ -17,7 +17,6 @@ data class AssetEntity(
 
     val addressId: Int? = null,
 
-    val statusId: Int? = null,
 
     val categoryId: Int? = null,
 
@@ -41,8 +40,6 @@ data class AssetEntity(
 
     val producer: String? = null,
 
-    val status: String? = null,
-
     val user: String? = null,
 ) {
     fun toAsset(): Asset {
@@ -51,7 +48,6 @@ data class AssetEntity(
             name = name,
             qrCode = qrCode,
             addressId = addressId,
-            statusId = statusId,
             categoryId = categoryId,
             producerId = producerId,
             modelId = modelId,
@@ -63,16 +59,17 @@ data class AssetEntity(
             address = KeyValue(name = address),
             models = KeyValue(name = models),
             producer = KeyValue(name = producer),
-            status = KeyValue(name = getStatus(statusId), id = statusId),
             user = User(userName = user),
         )
     }
-    private  fun getStatus(status: Int?) :String {
-        return when(true) {
-            (status == 1 ) -> "Tốt"
-            (status == 2) -> "Bình thường"
-            (status == 3) -> "Tệ"
-            else -> "Bình thường"
+    companion object {
+        fun getStatus(status: Int?): String {
+            return when (true) {
+                (status == 1) -> "Tốt"
+                (status == 2) -> "Bình thường"
+                (status == 3) -> "Tệ"
+                else -> "Bình thường"
+            }
         }
     }
 }
