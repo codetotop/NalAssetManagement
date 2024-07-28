@@ -76,4 +76,8 @@ class ActionBarView : LinearLayout {
     fun setTitle(title: String) {
         binding.tvTitle.text = title
     }
+
+    fun setImgRightVisibility(visibility: Int) {
+        binding.imgRight.visibility = visibility
+    }
 }

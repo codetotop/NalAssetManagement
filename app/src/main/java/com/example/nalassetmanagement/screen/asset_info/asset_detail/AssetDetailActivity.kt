@@ -53,7 +53,7 @@ class AssetDetailActivity : AppCompatActivity(), AssetDetailContract.View,
         ScanContract()
     ) { result: ScanIntentResult ->
         if (result.contents == null) {
-            //Toast.makeText(this@AssetDetailActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@ViewPdfActivity, "Qr code không hợp lệ!", Toast.LENGTH_LONG).show()
         } else {
             binding.loading.visibility = View.VISIBLE
             presenter.updateQrCodeAsset(

@@ -4,7 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
+import android.view.MenuItem
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.nalassetmanagement.R
 import com.example.nalassetmanagement.databinding.ActivityInventoryBinding
 
 import com.example.nalassetmanagement.model.inventory.InventorySession
@@ -46,7 +51,6 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View,
             InventorySessionDetailActivity::class.java
         )
         intent.putExtra(BUNDLE_TAG, inventorySession)
-
         startActivity(intent)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,6 +108,9 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View,
     }
 
     override fun onClickRightButton() {
+
+    }
+    private fun showPopup() {
 
     }
 

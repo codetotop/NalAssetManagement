@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         app:title="Phiên kiểm kê"
         app:img_left="@drawable/ic_back"
+        app:img_right="@drawable/ic_export"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

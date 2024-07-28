@@ -50,6 +50,7 @@
             android:stateNotNeeded="true"
             tools:replace="android:screenOrientation" />
         <activity android:name=".screen.inventory.inventory_detail.InventorySessionDetailActivity"/>
+        <activity android:name=".screen.view_pdf.ViewPdfActivity"/>
     </application>
 
 </manifest>
