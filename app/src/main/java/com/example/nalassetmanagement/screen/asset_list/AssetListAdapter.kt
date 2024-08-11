@@ -41,7 +41,7 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
                 binding.imgAssetAvatar.loadWithPicasso("", modelId, )
                 binding.tvAssetName.text = name
                 binding.tvUser.text = user?.userName ?: ""
-                binding.tvAddress.text = address?.name ?: "Kosmo"
+                binding.tvAddress.text = address?.name ?: "Kosmo-TayHo"
                 binding.tvStatus.text = status?.name ?: "Quá tốt"
                 status?.let {
                     binding.tvStatus.setBackgroundResource(backgroundStatus(it))
