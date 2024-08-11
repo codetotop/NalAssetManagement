@@ -146,7 +146,7 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
     }
 
     interface AssetListEventListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Int
         fun onAssetListChange(list: List<Asset>)
     }
 }
