@@ -1,4 +1,13 @@
-name: Android Debug
+name: Android CI
+
+env:
+  # The name of the main module repository
+  main_project_module: app
+
+  # The name version
+  version: v820
+  # The name task
+  name_task: issue1726_add_mitene_funtion
 
 on:
   push:
@@ -6,7 +15,7 @@ on:
       - dungnb
 
 jobs:
-  build:
+  build_and_upload:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,5 +52,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ${{ env.date_today }} - ${{version}} - ${{ env.name_task }}.apk
+          path: app/build/outputs/apk/debug/${{ env.date_today }} - ${{version}} - ${{ env.name_task }}.apk
