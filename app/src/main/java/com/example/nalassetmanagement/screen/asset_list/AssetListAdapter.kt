@@ -38,7 +38,7 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
     override fun onBindViewHolder(holder: AssetListViewHolder, itemPosition: Int) {
         with(holder) {
             with(list[itemPosition]) {
-                binding.imgAssetAvatar.loadWithPicasso("", modelId, )
+                binding.imgAssetAvatar.loadWithPicasso("", modelId)
                 binding.tvAssetName.text = name
                 binding.tvUser.text = user?.userName ?: ""
                 binding.tvAddress.text = address?.name ?: "Kosmo-TayHo"
@@ -75,6 +75,7 @@ class AssetListAdapter(var list: List<Asset>, private var listener: AssetListEve
             5 -> {
                 return R.drawable.bg_tv_status_green_dark
             }
+
             else -> {
                 return R.drawable.bg_tv_status_green_dark
             }
