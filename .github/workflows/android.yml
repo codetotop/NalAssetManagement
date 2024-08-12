@@ -6,7 +6,7 @@ on:
       - dungnb
 
 jobs:
-  build:
+  build_and_upload:
     runs-on: ubuntu-latest
 
     steps:
